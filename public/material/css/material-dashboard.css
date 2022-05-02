@@ -8865,7 +8865,7 @@ a.text-dark:focus {
 
 .btn.btn-primary.btn-link {
   background-color: transparent;
-  color: #9c27b0;
+  color: rgb(65,205,68);
   box-shadow: none;
 }
 
@@ -8873,7 +8873,7 @@ a.text-dark:focus {
 .btn.btn-primary.btn-link:focus,
 .btn.btn-primary.btn-link:active {
   background-color: transparent;
-  color: #9c27b0;
+  color: rgb(108,212,110);
 }
 
 .btn.btn-secondary {
@@ -10894,7 +10894,7 @@ fieldset[disabled] .form-group.is-focused .form-check .form-check-label {
 }
 
 .form-check .form-check-input:checked+.form-check-sign .check {
-  background: #9c27b0;
+  background: rgb(65,205,68);
 }
 
 .form-check .form-check-input:checked+.form-check-sign .check:before {
@@ -16777,7 +16777,7 @@ label {
 .card.bg-primary,
 .card.card-rotate.bg-primary .front,
 .card.card-rotate.bg-primary .back {
-  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+  background:  linear-gradient(90deg, rgba(95,195,97,1) 47%, rgba(95,195,97,1) 47%, rgba(95,195,97,1) 47%);
 }
 
 .card .card-header-info .card-icon,
