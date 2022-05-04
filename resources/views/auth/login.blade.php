@@ -109,7 +109,6 @@
                 } else {
                     x.type = "password";
                 }
-
                 // var p = document.getElementById("password_confirmation");
                 // if (p.type === "password") {
                 //     p.type = "text";

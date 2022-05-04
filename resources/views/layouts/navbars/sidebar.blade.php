@@ -19,8 +19,10 @@
       </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-          <p>{{ __('Laravel Examples') }}
+          <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+          <p>{{ __('Laravel Examples') }} -->
+          <i class="material-icons">person</i>
+          <p>{{ __('User') }}
             <b class="caret"></b>
           </p>
         </a>
@@ -41,7 +43,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+      <!-- <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Table List') }}</p>
@@ -70,6 +72,12 @@
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
+      </li> -->
+      <li class="nav-item{{ $activePage == 'reports' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('reports') }}">
+          <i class="material-icons">print</i>
+          <p>{{ __('reports') }}</p>
+        </a>
       </li>
       <!-- <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('language') }}">
@@ -83,6 +91,13 @@
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
       </li> -->
+      <li class="nav-item">
+       
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+          <i class="material-icons">logout</i>
+          <p>{{ __('Logout') }}</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

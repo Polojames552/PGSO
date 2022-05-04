@@ -66,15 +66,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Setup
 
-1. php artisan ui vue --auth
-2. composer require laravel-frontend-presets/material-dashboard
-3. php artisan ui material
-4. composer dump-autoload
-    4. Setup database in .env file
+1. copy .env.example and rename .env
+2. composer require laravel/ui
+3. php artisan ui vue --auth
+   ## (Do you want to replace it?)
+	## ->no
+4. Setup database in .env file
 5. php artisan migrate:fresh
 6. php artisan migrate --seed
-7. npm install
-8. npm cache clean --force
-        ->delete node_modules folder and package-lock.json file
-9. npm install
-10. npm run dev

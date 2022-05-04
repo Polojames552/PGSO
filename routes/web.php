@@ -52,6 +52,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
 	})->name('upgrade');
+
+
+	Route::get('reports', function () {
+		return view('pages.reports');
+	})->name('reports');
 });
 
 Route::group(['middleware' => 'auth'], function () {
