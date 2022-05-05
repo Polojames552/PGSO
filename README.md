@@ -68,9 +68,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 1. copy .env.example and rename .env
 2. composer require laravel/ui
-3. php artisan ui vue --auth
-   ## (Do you want to replace it?)
-	## ->no
+3. php artisan key:generate
 4. Setup database in .env file
 5. php artisan migrate:fresh
 6. php artisan migrate --seed

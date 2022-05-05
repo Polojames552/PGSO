@@ -25,34 +25,68 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+	// Route::get('table-list', function () {
+	// 	return view('pages.table_list');
+	// })->name('table');
 
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
+	// Route::get('typography', function () {
+	// 	return view('pages.typography');
+	// })->name('typography');
 
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
+	// Route::get('icons', function () {
+	// 	return view('pages.icons');
+	// })->name('icons');
+
+	// Route::get('notifications', function () {
+	// 	return view('pages.notifications');
+	// })->name('notifications');
+
+	// Route::get('rtl-support', function () {
+	// 	return view('pages.language');
+	// })->name('language');
+
+	// Route::get('upgrade', function () {
+	// 	return view('pages.upgrade');
+	// })->name('upgrade');
+
+
+
+	Route::get('AIP', function () {
+		return view('pages.AIP');
+	})->name('AIP');
+
+	Route::get('Assets', function () {
+		return view('pages.Assets');
+	})->name('Assets');
+
+	Route::get('ESS', function () {
+		return view('pages.ESS');
+	})->name('ESS');
+
+	Route::get('HDC', function () {
+		return view('pages.HDC');
+	})->name('HDC');
+
+	Route::get('Health', function () {
+		return view('pages.Health');
+	})->name('Health');
+
+	Route::get('Others', function () {
+		return view('pages.Others');
+	})->name('Others');
+
+	Route::get('SSS', function () {
+		return view('pages.SSS');
+	})->name('SSS');
+
+	Route::get('SW', function () {
+		return view('pages.SW');
+	})->name('SW');
+
 
 	Route::get('map', function () {
 		return view('pages.map');
 	})->name('map');
-
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
-
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
-
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
-
 
 	Route::get('reports', function () {
 		return view('pages.reports');

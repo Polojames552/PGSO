@@ -43,54 +43,59 @@
           </ul>
         </div>
       </li>
-      <!-- <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
+  
+   
+      <li class="nav-item{{ $activePage == 'AIP' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('AIP') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('AIP') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('typography') }}">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('icons') }}">
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
+      <li class="nav-item{{ $activePage == 'Assets' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('Assets') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('Assets') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('map') }}">
-          <i class="material-icons">location_ons</i>
-            <p>{{ __('Maps') }}</p>
+          <!-- <i class="material-icons">location_ons</i> -->
+          <i class="material-icons"></i>
+            <p>{{ __('GPSS') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('notifications') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
-        </a>
-      </li> -->
-      <li class="nav-item{{ $activePage == 'reports' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('reports') }}">
-          <i class="material-icons">print</i>
-          <p>{{ __('reports') }}</p>
+      <li class="nav-item{{ $activePage == 'HDC' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('HDC') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('HDC') }}</p>
         </a>
       </li>
-      <!-- <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('language') }}">
-          <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
+      <li class="nav-item{{ $activePage == 'Health' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('Health') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('Health') }}</p>
         </a>
       </li>
-      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
-        <a class="nav-link text-white bg-danger" href="{{ route('upgrade') }}">
-          <i class="material-icons text-white">unarchive</i>
-          <p>{{ __('Upgrade to PRO') }}</p>
+      <li class="nav-item{{ $activePage == 'SSS' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('SSS') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('SSS') }}</p>
         </a>
-      </li> -->
+      </li>
+      <li class="nav-item{{ $activePage == 'SW' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('SW') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('SW') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'Others' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('Others') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('Others') }}</p>
+        </a>
+      </li>
+    
+     
       <li class="nav-item">
        
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
