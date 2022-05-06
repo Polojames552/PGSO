@@ -4,6 +4,7 @@
 <div class="container" style="height: auto;">
   <div class="row justify-content-center">
       <div class="col-lg-7 col-md-8">
+        <br><br><br><br>
           <h1 class="text-white text-center">{{ __('PGSO') }}</h1>
       </div>
   </div>

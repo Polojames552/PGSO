@@ -4074,6 +4074,7 @@ tbody.collapse.show {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  
 }
 
 .nav-link {
@@ -4172,6 +4173,7 @@ tbody.collapse.show {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+ 
 }
 
 .navbar-brand {
@@ -13160,6 +13162,7 @@ fieldset[disabled] .form-group .form-control {
 
 .navbar>.container {
   flex: 1;
+   
 }
 
 .navbar.bg-primary {
@@ -13282,7 +13285,7 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .navbar.navbar-transparent {
-  background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
   box-shadow: none;
 }
 
