@@ -106,7 +106,7 @@
                     <i class="material-icons">phone</i>
                   </span>
                 </div>
-                <input type="text" name="phone" id="phone" class="form-control" placeholder="{{ __('Cellphone number...+639..') }}" value="{{ old('phone') }}" required>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="{{ __('+639.........') }}" value="{{ old('phone') }}" required>
               </div>
               @if ($errors->has('phone'))
                 <div id="phone-error" class="error text-danger pl-3" for="phone" style="display: block;">

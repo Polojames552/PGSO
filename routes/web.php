@@ -55,9 +55,10 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.AIP');
 	})->name('AIP');
 
-	Route::get('Assets', function () {
-		return view('pages.Assets');
-	})->name('Assets');
+	Route::get('Assets',[App\Http\Controllers\ShowDataController::class ,'Assets_show'])->name('Assets');
+	// Route::get('Assets', function () {
+	// 	return view('pages.Assets');
+	// })->name('Assets');
 
 	Route::get('ESS', function () {
 		return view('pages.ESS');
