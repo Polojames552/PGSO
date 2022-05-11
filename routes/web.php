@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirebaseController;
+use App\Http\Controllers\DeleteDataController;
+use App\Http\Controllers\ShowDataController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,10 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
 	// })->name('upgrade');
 
 
-
-	Route::get('AIP', function () {
-		return view('pages.AIP');
-	})->name('AIP');
+	Route::get('AIP',[App\Http\Controllers\ShowDataController::class ,'AIP_show'])->name('AIP');
+	// Route::get('AIP', function () {
+	// 	return view('pages.AIP');
+	// })->name('AIP');
 
 	Route::get('Assets',[App\Http\Controllers\ShowDataController::class ,'Assets_show'])->name('Assets');
 	// Route::get('Assets', function () {
@@ -92,6 +94,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('reports', function () {
 		return view('pages.reports');
 	})->name('reports');
+
+
+
+	// Delete Data Assets
+	Route::delete('assets-delete/{id}', [DeleteDataController::class ,'destroy']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

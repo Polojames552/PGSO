@@ -1,5 +1,6 @@
 @extends('layouts.app', ['activePage' => 'Assets', 'titlePage' => __('Assets')])
-
+		<!-- javascript void link reference -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/table2.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   <!-- humburgerv link-->
 @section('content')
@@ -13,15 +14,26 @@
                                 <i class="fas fa-table me-1"></i>
                                 Assets
                             </div>
+
+							<div class="col-sm-12">
+                            @if(session()->has('message'))
+								<div class="alert alert-success">
+									{{ session()->get('message') }}
+								</div>
+							@endif
+					    	</div>
+							
                         <div class="col-sm-12">
                             <p align="right">
-                                <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Add New Record</button>
-                            </p>
+								<button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
+                                <button class="btn btn-danger" data-toggle="modal"><i class="fas fa-file-download"></i></button>
+							</p>
 					    </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="datatablesSimple" class="TableData">
                                     <thead>
                                         <tr>
+											<th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
@@ -30,6 +42,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+											<th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
@@ -39,13 +52,15 @@
                                     <tbody>
                                     @foreach($user as $user) 
                                         <tr>
+										<td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>
                                         <td>{{$user->role}}</td>
                                         <td>
                                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            <!-- <a href="#deleteEmployeeModal" class="delete" id="deletebtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+											<a href="javascript:void(0)" class="delete" id="deletebtn"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>
                                         </tr>
                                     @endforeach
@@ -129,12 +144,16 @@
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+
+				<form id="delete_modal_Form" method="POST">
+				{{ csrf_field() }}
+            	{{ method_field('DELETE') }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">	
+					<input type="hidden" id="delete_youth_id">				
 						<p>Are you sure you want to delete these Records?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -143,6 +162,7 @@
 						<input type="submit" class="btn btn-danger" value="Delete">
 					</div>
 				</form>
+
 			</div>
 		</div>
 	</div>
@@ -152,6 +172,26 @@
     </div>
   </div>
 </div>
+
+<script>
+              $(document).ready(function(){
+
+                  $('.TableData').on('click', '#deletebtn', function(){
+
+                    $tr = $(this).closest('tr');
+
+                      var data = $tr.children("td").map(function(){
+                          return $(this).text();
+                      }).get();
+
+                      $('#delete_youth_id').val(data[0]);
+                    //   $('#youth_name').val(data[1]);
+                      $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+
+                      $('#deleteEmployeeModal').modal('show');
+                  });
+              });
+        </script>
 
 
          <script src="js/scripts.js"></script>
