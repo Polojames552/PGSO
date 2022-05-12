@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirebaseController;
 use App\Http\Controllers\DeleteDataController;
 use App\Http\Controllers\ShowDataController;
+
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AipController;
+use App\Http\Controllers\HealthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,12 +56,12 @@ Route::group(['middleware' => 'auth'], function () {
 	// })->name('upgrade');
 
 
-	Route::get('AIP',[App\Http\Controllers\ShowDataController::class ,'AIP_show'])->name('AIP');
+	Route::get('AIP',[App\Http\Controllers\AipController::class ,'AIP_show'])->name('AIP');
 	// Route::get('AIP', function () {
 	// 	return view('pages.AIP');
 	// })->name('AIP');
 
-	Route::get('Assets',[App\Http\Controllers\ShowDataController::class ,'Assets_show'])->name('Assets');
+	Route::get('Assets',[App\Http\Controllers\AssetController::class ,'Assets_show'])->name('Assets');
 	// Route::get('Assets', function () {
 	// 	return view('pages.Assets');
 	// })->name('Assets');
@@ -70,9 +74,10 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.HDC');
 	})->name('HDC');
 
-	Route::get('Health', function () {
-		return view('pages.Health');
-	})->name('Health');
+	Route::get('Health',[App\Http\Controllers\HealthController::class ,'Health_show'])->name('Health');
+	// Route::get('Health', function () {
+	// 	return view('pages.Health');
+	// })->name('Health');
 
 	Route::get('Others', function () {
 		return view('pages.Others');
@@ -97,8 +102,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	// Delete Data Assets
-	Route::delete('assets-delete/{id}', [DeleteDataController::class ,'destroy']);
+	// Delete Data 
+	Route::delete('assets-delete/{id}', [AssetController::class ,'destroy']);
+	Route::delete('aip-delete/{id}', [AipController::class ,'destroy']);
+	Route::delete('health-delete/{id}', [HealthController::class ,'destroy']);
+	//Add Data
+	Route::post('add_aip',[AipController::class ,'store']);
+	Route::post('asset',[AssetController::class ,'store']);
+	Route::post('add_health',[HealthController::class ,'store']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

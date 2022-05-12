@@ -50,18 +50,18 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($user as $user) 
+                                    @foreach($asset as $asset) 
                                         <tr>
-										<td>{{$user->id}}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->role}}</td>
-                                        <td>
-                                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                            <!-- <a href="#deleteEmployeeModal" class="delete" id="deletebtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-											<a href="javascript:void(0)" class="delete" id="deletebtn"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                        </td>
+											<td>{{$asset->id}}</td>
+											<td>{{$asset->Product_name}}</td>
+											<td>{{$asset->Quantity}}</td>
+											<td>{{$asset->Condition}}</td>
+											<td>{{$asset->Price}}</td>
+											<td>
+												<a href="javascript:void(0)" class="edit" id="editbtn"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+												<!-- <a href="#deleteEmployeeModal" class="delete" id="deletebtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+												<a href="javascript:void(0)" class="delete" id="deletebtn"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+											</td>
                                         </tr>
                                     @endforeach
 
@@ -70,31 +70,34 @@
                             </div>
                         </div>
 
-                        <!-- Edit Modal HTML -->
+            <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form action="asset" method="post" enctype="multipart/form-data">
+                      {{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Add Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
+
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
+							<label>Product Name</label>
+							<input name="Product_name" type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
+							<label>Quantity</label>
+							<input name="Quantity" type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<label>Condition</label>
+							<input name="Condition" type="text" class="form-control" required>
+							<!-- <textarea class="form-control" required></textarea> -->
 						</div>
 						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
+							<label>Price</label>
+							<input name="Price" type="text" class="form-control" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -117,19 +120,20 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" id="Product_name" required>
 						</div>
 						<div class="form-group">
 							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<input type="email" class="form-control" id="Quantity" required>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" class="form-control" required>
+              			<input type="email" class="form-control" id="Condition" required>
+							<!-- <textarea class="form-control" id="phone" required></textarea> -->
+						</div>
+						<div class="form-group">
+							<label>Role</label>
+							<input type="email" class="form-control" id="Price" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -189,6 +193,21 @@
                       $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
 
                       $('#deleteEmployeeModal').modal('show');
+                  });
+
+
+				  $('.TableData').on('click', '#editbtn', function(){
+                    $tr = $(this).closest('tr');
+
+                      var data = $tr.children("td").map(function(){
+                          return $(this).text();
+                      }).get();
+                      $('#Product_name').val(data[1]);
+                      $('#Quantity').val(data[2]);
+                      $('#Condition').val(data[3]);
+                      $('#Price').val(data[4]);
+                      // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                      $('#editEmployeeModal').modal('show');
                   });
               });
         </script>

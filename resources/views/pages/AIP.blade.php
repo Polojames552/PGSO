@@ -1,6 +1,7 @@
 @extends('layouts.app', ['activePage' => 'AIP', 'titlePage' => __('AIP')])
 		<!-- javascript void link reference -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <link rel="stylesheet" href="{{ asset('css/table2.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   <!-- humburgerv link-->
 @section('content')
@@ -37,28 +38,28 @@
                                         <tr>
 											<th>ID</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>address</th>
+                                            <th>contact</th>
+                                            <th>age</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
 											<th>ID</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>address</th>
+                                            <th>contact</th>
+                                            <th>age</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($user as $user) 
+                                    @foreach($aip as $aip) 
                                         <tr>
-										<td>{{$user->id}}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->role}}</td>
+										<td>{{$aip->id}}</td>
+                                        <td>{{$aip->name}}</td>
+                                        <td>{{$aip->address}}</td>
+                                        <td>{{$aip->contact}}</td>
+                                        <td>{{$aip->age}}</td>
                                         <td>
                                             <!-- <a href="#editEmployeeModal" class="edit" class="editbtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> -->
                                             <!-- <a href="#deleteEmployeeModal" class="delete" id="deletebtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
@@ -73,11 +74,12 @@
                             </div>
                         </div>
 
-                        <!-- Edit Modal HTML -->
+                        <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+			<form action="add_aip" method="post" enctype="multipart/form-data">
+                      {{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Add Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -85,19 +87,20 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
+							<input name="name" type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<input name="address" type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" class="form-control" required>
+							<input name="contact" type="text" class="form-control" required>
+							<!-- <textarea class="form-control" required></textarea> -->
+						</div>
+						<div class="form-group">
+							<label>Age</label>
+							<input name="age" type="text" class="form-control" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -120,20 +123,20 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" id="name" required>
+							<input type="text" class="form-control" id="EditName" required>
 						</div>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" id="email" required>
+							<label>Address</label>
+							<input type="text" class="form-control" id="EditAddress" required>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-              <input type="email" class="form-control" id="phone" required>
+              				<input type="text" class="form-control" id="EditContact" required>
 							<!-- <textarea class="form-control" id="phone" required></textarea> -->
 						</div>
 						<div class="form-group">
-							<label>Role</label>
-							<input type="email" class="form-control" id="role" required>
+							<label>Age</label>
+							<input type="text" class="form-control" id="EditAge" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -186,10 +189,9 @@
                       var data = $tr.children("td").map(function(){
                           return $(this).text();
                       }).get();
-
                       $('#delete_youth_id').val(data[0]);
                     //   $('#youth_name').val(data[1]);
-                      $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                      $('#delete_modal_Form').attr('action', 'aip-delete/'+data[0]);
                       $('#deleteEmployeeModal').modal('show');
                   });
 
@@ -199,11 +201,11 @@
                       var data = $tr.children("td").map(function(){
                           return $(this).text();
                       }).get();
-
-                      $('#name').val(data[1]);
-                      $('#email').val(data[2]);
-                      $('#phone').val(data[3]);
-                      $('#role').val(data[4]);
+					  
+                      $('#EditName').val(data[1]);
+                      $('#EditAddress').val(data[2]);
+                      $('#EditContact').val(data[3]);
+                      $('#EditAge').val(data[4]);
                       // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
                       $('#editEmployeeModal').modal('show');
                   });
