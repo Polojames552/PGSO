@@ -13,20 +13,7 @@ class HealthController extends Controller
     }
     public function store(Request $request)
     {
-        // 'Property_No',
-        // 'Description',
-        // 'Date_Aquired',
-        // 'Aquisition_Cost',
-        // 'Accountable_Person',
-        // 'Location',
-        // 'Med_dental_equipment',
-        // 'Office_Eq',
-        // 'Hospital_Eq',
-        // 'FurnitureNFixtures',
-        // 'Motor_Vehicles',
-        // 'Other_Machine_Eq',
-        // 'Other_Asset',
-        // 'Remark', 
+       
         $data = new health();
         $data->Property_No = $request->input('Property_No');
         $data->Description = $request->input('Description');
@@ -51,5 +38,43 @@ class HealthController extends Controller
         $item = DB::table('healths')->where('Property_No', $id);
         $item->delete();
         return redirect('Health')->with('message', 'The data is successfully deleted!');
+    }
+    public function update_health(Request $request, $id)
+    {
+        $Property_No = $request->input('EditProperty_No');
+        $Description = $request->input('EditDescription');
+        $Date_Aquired = $request->input('EditDate_Aquired');
+        $Aquisition_Cost = $request->input('EditAquisition_Cost');
+        $Accountable_Person = $request->input('EditAccountable_Person');
+        $Location = $request->input('EditLocation');
+        $Med_dental_equipment = $request->input('EditMed_dental_equipment');
+        $Office_Eq = $request->input('EditOffice_Eq');
+        $Hospital_Eq = $request->input('EditHospital_Eq');
+        $FurnitureNFixtures = $request->input('EditFurnitureNFixtures');
+        $Motor_Vehicles = $request->input('EditMotor_Vehicles');
+        $Other_Machine_Eq = $request->input('EditOther_Machine_Eq');
+        $Other_Asset = $request->input('EditOther_Asset');
+        $Remark = $request->input('EditRemark');
+
+        DB::table('healths')
+        ->where('Property_No', $Property_No)
+        ->update(array(
+        'Property_No' => $Property_No,
+        'Description' => $Description,
+        'Date_Aquired' => $Date_Aquired,
+        'Aquisition_Cost' => $Aquisition_Cost,
+        'Accountable_Person' => $Accountable_Person,
+        'Location' => $Location,
+        'Med_dental_equipment' => $Med_dental_equipment,
+        'Office_Eq' => $Office_Eq,
+        'Hospital_Eq' => $Hospital_Eq,
+        'FurnitureNFixtures' => $FurnitureNFixtures,
+        'Motor_Vehicles' => $Motor_Vehicles,
+        'Other_Machine_Eq' => $Other_Machine_Eq,
+        'Other_Asset' => $Other_Asset,
+        'Remark' => $Remark
+        ));
+
+        return redirect('Health')->with('message','Data updated successfully!');;
     }
 }

@@ -57,8 +57,8 @@
             <p>{{ __('Assets') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('map') }}">
+      <li class="nav-item{{ $activePage == 'GPSS' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('GPSS') }}">
           <!-- <i class="material-icons">location_ons</i> -->
           <i class="material-icons"></i>
             <p>{{ __('GPSS') }}</p>

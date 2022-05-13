@@ -27,7 +27,7 @@
 								</div>
 							@endif
 					    	</div>
-						<!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button>  -->
+					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                         <div class="col-sm-12">
                             <p align="right">
                                <!-- <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Add New Record</button>
@@ -215,7 +215,8 @@
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+      <form action="edithealth" method="post" enctype="multipart/form-data" id="editForm">
+                      {{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -224,7 +225,7 @@
                   <div class="row">
                     <div class="col-4">
                       <label>Property No.</label>
-                      <input id="EditProperty_No" name="EditProperty_No" type="text" class="form-control" required>
+                      <input id="EditProperty_No" name="EditProperty_No" type="text" class="form-control" disabled>
                     </div>
                     <div class="col-4">
                       <label>Date Aquired</label>
@@ -345,38 +346,26 @@
 </div>
 
 <script>
-          //  function sample() {
-          //       const {creatPoll} = require('mysql');
-          //        const pool = creatPoll({
-          //          host: "localhost", 
-          //          user: "root",      
-          //          password: "",    
-          //          database: "test.db", 
-          //          connectionLimit: 10
-          //        })
-          //        pool.query('select * from healths', (err, result) => {
-          //           alert(result);
-          //        })
-          //     }
-          //  var health1 = ['asd','asdddd'];
-          // health1.forEach(function(color){
-          //      alert(color);
-          //    });
-          // function sample() { 
-          //   const mysql = require('mysql');
-          //   var conn = mysql.createConnection({
-          //     host: 'localhost', 
-          //     user: 'root',      
-          //     password: '',      
-          //     database: 'test.db' 
-          //   }); 
-            
-          //   conn.connect(function(err) {
-          //     if (err) throw err;
-          //     console.log('Database is connected successfully !');
-          //   });
-          // }
-    
+        
+        //   function sample() {
+        //   var ajax = new XMLHttpRequest();
+        //   var method = "GET";
+        //   var url = "Health";
+        //   var asyn = true;
+
+        //   ajax.open(method, url, asyn);
+        //   ajax.send();
+        //   ajax.onreadystatechange = function(){
+        //     if(this.readyState == 4 && this.status == 200){
+        //       var data = JSON.parse(this.responseText);
+        //       console.log(data);
+        //       var html ="";
+        //       for(var a = 0; a<data.length; a++){
+        //         alert(data[a].Property_No);
+        //       }
+        //     }
+        //   }
+        // }
           var docDefinition ={
             pageOrientation: 'landscape',
             pageSize: 'Letter',
@@ -514,8 +503,8 @@
                       $('#EditOther_Machine_Eq').val(data[11]);
                       $('#EditOther_Asset').val(data[12]);
                       $('#EditRemark').val(data[13]);
-                   
                       // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                      $('#editForm').attr('action', 'edithealth/'+data[0]);
                       $('#editEmployeeModal').modal('show');
                   });
               });

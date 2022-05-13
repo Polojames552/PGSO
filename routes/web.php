@@ -8,6 +8,7 @@ use App\Http\Controllers\ShowDataController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AipController;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\GpssController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,17 +56,25 @@ Route::group(['middleware' => 'auth'], function () {
 	// 	return view('pages.upgrade');
 	// })->name('upgrade');
 
+	// Route::get('map', function () {
+	// 	return view('pages.map');
+	// })->name('map');
 
-	Route::get('AIP',[App\Http\Controllers\AipController::class ,'AIP_show'])->name('AIP');
 	// Route::get('AIP', function () {
 	// 	return view('pages.AIP');
 	// })->name('AIP');
 
-	Route::get('Assets',[App\Http\Controllers\AssetController::class ,'Assets_show'])->name('Assets');
 	// Route::get('Assets', function () {
 	// 	return view('pages.Assets');
 	// })->name('Assets');
 
+	// Route::get('Health', function () {
+	// 	return view('pages.Health');
+	// })->name('Health');
+	Route::get('AIP',[App\Http\Controllers\AipController::class ,'AIP_show'])->name('AIP');
+	Route::get('Assets',[App\Http\Controllers\AssetController::class ,'Assets_show'])->name('Assets');
+	Route::get('Health',[App\Http\Controllers\HealthController::class ,'Health_show'])->name('Health');
+	Route::get('GPSS',[App\Http\Controllers\GpssController::class ,'Gpss_show'])->name('GPSS');
 	Route::get('ESS', function () {
 		return view('pages.ESS');
 	})->name('ESS');
@@ -73,11 +82,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('HDC', function () {
 		return view('pages.HDC');
 	})->name('HDC');
+	
 
-	Route::get('Health',[App\Http\Controllers\HealthController::class ,'Health_show'])->name('Health');
-	// Route::get('Health', function () {
-	// 	return view('pages.Health');
-	// })->name('Health');
+	// Route::get('GPSS', function () {
+	// 	return view('pages.GPSS');
+	// })->name('GPSS');
+
 
 	Route::get('Others', function () {
 		return view('pages.Others');
@@ -92,9 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('SW');
 
 
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
+	
 
 	Route::get('reports', function () {
 		return view('pages.reports');
@@ -106,10 +114,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('assets-delete/{id}', [AssetController::class ,'destroy']);
 	Route::delete('aip-delete/{id}', [AipController::class ,'destroy']);
 	Route::delete('health-delete/{id}', [HealthController::class ,'destroy']);
+	Route::delete('gpss-delete/{id}', [GpssController::class ,'destroy']);
 	//Add Data
 	Route::post('add_aip',[AipController::class ,'store']);
 	Route::post('asset',[AssetController::class ,'store']);
 	Route::post('add_health',[HealthController::class ,'store']);
+	Route::post('add_gpss',[GpssController::class ,'store']);
+	//Edit Data
+	Route::post('edithealth/{id}',[HealthController::class ,'update_health'])->name('edithealth');
+	Route::post('editgpss/{id}',[GpssController::class ,'update_gpss'])->name('editgpss');
 });
 
 Route::group(['middleware' => 'auth'], function () {
