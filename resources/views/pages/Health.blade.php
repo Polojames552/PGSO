@@ -1,7 +1,11 @@
 @extends('layouts.app', ['activePage' => 'Health', 'titlePage' => __('Health')])
+	  
+    <!-- PDFmake link reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js" integrity="sha512-cktKDgjEiIkPVHYbn8bh/FEyYxmt4JDJJjOCu5/FQAkW4bc911XtKYValiyzBiJigjVEvrIAyQFEbRJZyDA1wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<!-- javascript void link reference -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
         <link rel="stylesheet" href="{{ asset('css/table2.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   <!-- humburgerv link-->
 @section('content')
@@ -23,13 +27,13 @@
 								</div>
 							@endif
 					    	</div>
-							
+						<!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button>  -->
                         <div class="col-sm-12">
                             <p align="right">
                                <!-- <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Add New Record</button>
 								                <button class="btn btn-danger" data-toggle="modal">Export to PDF</button> -->
                                 <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
-                                <button class="btn btn-danger" data-toggle="modal"><i class="fas fa-file-download"></i></button>
+                                <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button>
                             </p>
 					    </div>
                             <div class="card-body">
@@ -133,19 +137,25 @@
                 <br>
             
             <div class="form-group">
-							<label>Accountable Person</label>
-							<input name="Accountable_Person" type="text" class="form-control" required>
+              <div class="col-12">
+                <label>Accountable Person</label>
+                <input name="Accountable_Person" type="text" class="form-control" required>
+              </div>	
 						</div>		
 
             <div class="form-group">
-							<label>Description</label>
-              <input name="Description" type="text" class="form-control" required>
+              <div class="col-12">
+							  <label>Description</label>
+                <input name="Description" type="text" class="form-control" required>
+              </div>
 							<!-- <textarea name="name" class="form-control" required></textarea> -->
 						</div>
 
             <div class="form-group">
-							<label>Location</label>
-							<input name="Location" type="text" class="form-control" >
+              <div class="col-12">
+							  <label>Location</label>
+							  <input name="Location" type="text" class="form-control" >
+              </div>
 						</div>					
 				
                 <div class="row">
@@ -227,20 +237,26 @@
                 </div>
                 <br>
             <div class="form-group">
-							<label>Accountable Person</label>
-							<input id="EditAccountable_Person" name="EditAccountable_Person" type="text" class="form-control" required>
-						</div>		
+              <div class="col-12">
+							  <label>Accountable Person</label>
+							  <input id="EditAccountable_Person" name="EditAccountable_Person" type="text" class="form-control" required>
+              </div>	
+            </div>		
 
             <div class="form-group">
-							<label>Description</label>
-              <input id="EditDescription" name="EditDescription" type="text" class="form-control" required>
-							<!-- <textarea name="name" class="form-control" required></textarea> -->
+              <div class="col-12">
+							  <label>Description</label>
+                <input id="EditDescription" name="EditDescription" type="text" class="form-control" required>
+							</div>	
+              <!-- <textarea name="name" class="form-control" required></textarea> -->
 						</div>
 
             <div class="form-group">
-							<label>Location</label>
-							<input id="EditLocation" name="EditLocation" type="text" class="form-control" >
-						</div>					
+              <div class="col-12">
+							  <label>Location</label>
+							  <input id="EditLocation" name="EditLocation" type="text" class="form-control" >
+              </div>	
+            </div>					
 				
                 <div class="row">
                     <div class="col-4">
@@ -329,8 +345,142 @@
 </div>
 
 <script>
-              $(document).ready(function(){
+          //  function sample() {
+          //       const {creatPoll} = require('mysql');
+          //        const pool = creatPoll({
+          //          host: "localhost", 
+          //          user: "root",      
+          //          password: "",    
+          //          database: "test.db", 
+          //          connectionLimit: 10
+          //        })
+          //        pool.query('select * from healths', (err, result) => {
+          //           alert(result);
+          //        })
+          //     }
+          //  var health1 = ['asd','asdddd'];
+          // health1.forEach(function(color){
+          //      alert(color);
+          //    });
+          // function sample() { 
+          //   const mysql = require('mysql');
+          //   var conn = mysql.createConnection({
+          //     host: 'localhost', 
+          //     user: 'root',      
+          //     password: '',      
+          //     database: 'test.db' 
+          //   }); 
+            
+          //   conn.connect(function(err) {
+          //     if (err) throw err;
+          //     console.log('Database is connected successfully !');
+          //   });
+          // }
+    
+          var docDefinition ={
+            pageOrientation: 'landscape',
+            pageSize: 'Letter',
+            content:[
+              // {text: 'INVENTORY OF SERVICEABLE EQUIPMENT', style: 'header'},
+              {
+              text:[
+                'INVENTORY OF SERVICEABLE EQUIPMENT\n',
+                'As of\n',
+                'PRIETO DIAZ MEDICARE HOSPITAL\n',
+                'Prieto Diaz, Sorsogon\n',
+              ],
+              style: 'header1',
+              alignment: 'center'
+              },
+              {
+                style: 'tableExample',
+                color: '#444',
+                table: {
+                  widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+                  headerRows: 1,
+                  // keepWithHeaderRows: 1,
+                  body: [
+                    [
+                     
+                    {text: 'Property No.', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Description', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Date Aquired', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Aquisition Cost', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Accountable Person', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Location', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Med. dental Equipment', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Office Equipment', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Hospital Equipment', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Furniture & Fixtures', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Motor Vehicles', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Other Machine Equipment', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Other Asset', style: 'tableHeader', alignment: 'center'},
+                    {text: 'Remark', style: 'tableHeader', alignment: 'center'}
+                    ],
+                   
+                    [
+                    // foreach($health as $health)
+                    {text: '{{$health->Property_No}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Description}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Date_Aquired}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Aquisition_Cost}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Accountable_Person}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Location}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Med_dental_equipment}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Office_Eq}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Hospital_Eq}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->FurnitureNFixtures}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Motor_Vehicles}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Other_Machine_Eq}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Other_Asset}}', style: 'content', alignment: 'left'},
+                    {text: '{{$health->Remark}}', style: 'content', alignment: 'left'}
+                    // endforeach
+                  ],
+                    
+                    // ['Sample value 1', 'Sample value 2', 'Sample value 3', 'Sample value 4', 'Sample value 5', 'Sample value 6', 'Sample value 7', 'Sample value 8', 'Sample value 9', 'Sample value 10', 'Sample value 11', 'Sample value 12', 'Sample value 13', 'Sample value 14'],
+                  ]
+                }
+              }
+            ],
+            styles: {
+            header: {
+              fontSize: 9,
+              bold: true,
+              margin: [0, 0, 0, 10]
+            },
+            subheader: {
+              fontSize: 9,
+              bold: true,
+              margin: [0, 10, 0, 5]
+            },
+            tableExample: {
+              margin: [0, 5, 0, 15]
+            },
+            tableHeader: {
+              bold: true,
+              fontSize: 8,
+              color: 'black'
+            },
+            header1: {
+              fontSize: 9
+            },
+            content: {
+              fontSize: 6
+            }
+          },
+          defaultStyle: {
+            // alignment: 'justify'
+          }
+          }
 
+          function GenPDF() {
+            // alert('hello');
+            pdfMake.createPdf(docDefinition).download();
+          }
+         
+          
+              $(document).ready(function(){
+                  
                   $('.TableData').on('click', '#deletebtn', function(){
                     $tr = $(this).closest('tr');
 
