@@ -218,14 +218,14 @@
       <form action="edithealth" method="post" enctype="multipart/form-data" id="editForm">
                       {{ csrf_field() }}
 					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
+						<h4 class="modal-title">Edit Health Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
           <div class="modal-body">					
                   <div class="row">
                     <div class="col-4">
                       <label>Property No.</label>
-                      <input id="EditProperty_No" name="EditProperty_No" type="text" class="form-control" disabled>
+                      <input id="EditProperty_No" name="EditProperty_No" type="text" class="form-control">
                     </div>
                     <div class="col-4">
                       <label>Date Aquired</label>
@@ -409,20 +409,20 @@
                    
                     [
                     // foreach($health as $health)
-                    {text: '{{$health->Property_No}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Description}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Date_Aquired}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Aquisition_Cost}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Accountable_Person}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Location}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Med_dental_equipment}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Office_Eq}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Hospital_Eq}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->FurnitureNFixtures}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Motor_Vehicles}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Other_Machine_Eq}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Other_Asset}}', style: 'content', alignment: 'left'},
-                    {text: '{{$health->Remark}}', style: 'content', alignment: 'left'}
+                    {text: 'Property_No', style: 'content', alignment: 'left'},
+                    {text: 'Description', style: 'content', alignment: 'left'},
+                    {text: 'Date_Aquired', style: 'content', alignment: 'left'},
+                    {text: 'Aquisition_Cost', style: 'content', alignment: 'left'},
+                    {text: 'Accountable_Person', style: 'content', alignment: 'left'},
+                    {text: 'Location', style: 'content', alignment: 'left'},
+                    {text: 'Med_dental_equipment', style: 'content', alignment: 'left'},
+                    {text: 'Office_Eq', style: 'content', alignment: 'left'},
+                    {text: 'Hospital_Eq', style: 'content', alignment: 'left'},
+                    {text: 'FurnitureNFixtures', style: 'content', alignment: 'left'},
+                    {text: 'Motor_Vehicles', style: 'content', alignment: 'left'},
+                    {text: 'Other_Machine_Eq', style: 'content', alignment: 'left'},
+                    {text: 'Other_Asset', style: 'content', alignment: 'left'},
+                    {text: 'Remark', style: 'content', alignment: 'left'}
                     // endforeach
                   ],
                     

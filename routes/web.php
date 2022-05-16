@@ -9,6 +9,11 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AipController;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\GpssController;
+use App\Http\Controllers\HdcController;
+use App\Http\Controllers\SssController;
+use App\Http\Controllers\SwController;
+use App\Http\Controllers\EssController;
+use App\Http\Controllers\OtherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,17 +76,39 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('Health', function () {
 	// 	return view('pages.Health');
 	// })->name('Health');
+
+		// Route::get('HDC', function () {
+	// 	return view('pages.HDC');
+	// })->name('HDC');
+
+	
+	// Route::get('SSS', function () {
+	// 	return view('pages.SSS');
+	// })->name('SSS');
+
+	
+	// Route::get('SW', function () {
+	// 	return view('pages.SW');
+	// })->name('SW');
+
+	// Route::get('ESS', function () {
+	// 	return view('pages.ESS');
+	// })->name('ESS');
+
+	// Route::get('Others', function () {
+	// 	return view('pages.Others');
+	// })->name('Others');
+
 	Route::get('AIP',[App\Http\Controllers\AipController::class ,'AIP_show'])->name('AIP');
 	Route::get('Assets',[App\Http\Controllers\AssetController::class ,'Assets_show'])->name('Assets');
 	Route::get('Health',[App\Http\Controllers\HealthController::class ,'Health_show'])->name('Health');
 	Route::get('GPSS',[App\Http\Controllers\GpssController::class ,'Gpss_show'])->name('GPSS');
-	Route::get('ESS', function () {
-		return view('pages.ESS');
-	})->name('ESS');
-
-	Route::get('HDC', function () {
-		return view('pages.HDC');
-	})->name('HDC');
+	Route::get('HDC',[App\Http\Controllers\HdcController::class ,'Hdc_show'])->name('HDC');
+	Route::get('SSS',[App\Http\Controllers\SssController::class ,'Sss_show'])->name('SSS');
+	Route::get('SW',[App\Http\Controllers\SwController::class ,'Sw_show'])->name('SW');
+	Route::get('ESS',[App\Http\Controllers\EssController::class ,'Ess_show'])->name('ESS');
+	Route::get('Others',[App\Http\Controllers\OtherController::class ,'Other_show'])->name('Others');
+	
 	
 
 	// Route::get('GPSS', function () {
@@ -89,20 +116,9 @@ Route::group(['middleware' => 'auth'], function () {
 	// })->name('GPSS');
 
 
-	Route::get('Others', function () {
-		return view('pages.Others');
-	})->name('Others');
-
-	Route::get('SSS', function () {
-		return view('pages.SSS');
-	})->name('SSS');
-
-	Route::get('SW', function () {
-		return view('pages.SW');
-	})->name('SW');
 
 
-	
+
 
 	Route::get('reports', function () {
 		return view('pages.reports');
@@ -115,14 +131,31 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('aip-delete/{id}', [AipController::class ,'destroy']);
 	Route::delete('health-delete/{id}', [HealthController::class ,'destroy']);
 	Route::delete('gpss-delete/{id}', [GpssController::class ,'destroy']);
+	Route::delete('hdc-delete/{id}', [HdcController::class ,'destroy']);
+	Route::delete('sss-delete/{id}', [SssController::class ,'destroy']);
+	Route::delete('sw-delete/{id}', [SwController::class ,'destroy']);
+	Route::delete('ess-delete/{id}', [EssController::class ,'destroy']);
+	Route::delete('other-delete/{id}', [OtherController::class ,'destroy']);
 	//Add Data
 	Route::post('add_aip',[AipController::class ,'store']);
 	Route::post('asset',[AssetController::class ,'store']);
 	Route::post('add_health',[HealthController::class ,'store']);
 	Route::post('add_gpss',[GpssController::class ,'store']);
+	Route::post('add_hdc',[HdcController::class ,'store']);
+	Route::post('add_sss',[SssController::class ,'store']);
+	Route::post('add_sw',[SwController::class ,'store']);
+	Route::post('add_ess',[EssController::class ,'store']);
+	Route::post('add_other',[OtherController::class ,'store']);
 	//Edit Data
 	Route::post('edithealth/{id}',[HealthController::class ,'update_health'])->name('edithealth');
 	Route::post('editgpss/{id}',[GpssController::class ,'update_gpss'])->name('editgpss');
+	Route::post('editasset/{id}',[AssetController::class ,'update_asset'])->name('editasset');
+	Route::post('editaip/{id}',[AipController::class ,'update_aip'])->name('editaip');
+	Route::post('edithdc/{id}',[HdcController::class ,'update_hdc'])->name('edithdc');
+	Route::post('editsss/{id}',[SssController::class ,'update_sss'])->name('editsss');
+	Route::post('editsw/{id}',[SwController::class ,'update_sw'])->name('editsw');
+	Route::post('editess/{id}',[EssController::class ,'update_ess'])->name('editess');
+	Route::post('editother/{id}',[OtherController::class ,'update_other'])->name('editother');
 });
 
 Route::group(['middleware' => 'auth'], function () {

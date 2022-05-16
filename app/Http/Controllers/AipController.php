@@ -27,4 +27,22 @@ class AipController extends Controller
         $aip->delete();
         return redirect('AIP')->with('message', 'The data is successfully deleted!');
     }
+    public function update_aip(Request $request, $id)
+    {
+        $name = $request->input('EditName');
+        $add = $request->input('EditAddress');
+        $contact = $request->input('EditContact');
+        $age = $request->input('EditAge');
+     
+        DB::table('aips')
+        ->where('id', $id)
+        ->update(array(
+        'name' => $name,
+        'address' => $add,
+        'contact' => $contact,
+        'age' => $age
+        ));
+
+        return redirect('AIP')->with('message','Data updated successfully!');;
+    }
 }

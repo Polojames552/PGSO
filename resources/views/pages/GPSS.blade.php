@@ -17,7 +17,7 @@
       <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Health
+                                GPSS
                             </div>
 
 							<div class="col-sm-12">
@@ -82,7 +82,7 @@
 			<form action="add_gpss" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
 					<div class="modal-header">						
-						<h4 class="modal-title">Add Health Data</h4>
+						<h4 class="modal-title">Add GPSS Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
                 

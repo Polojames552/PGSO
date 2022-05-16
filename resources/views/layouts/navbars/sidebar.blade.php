@@ -88,6 +88,12 @@
             <p>{{ __('SW') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'ESS' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('ESS') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('ESS') }}</p>
+        </a>
+      </li>
       <li class="nav-item{{ $activePage == 'Others' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('Others') }}">
           <i class="material-icons"></i>

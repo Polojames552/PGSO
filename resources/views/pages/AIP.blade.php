@@ -81,7 +81,7 @@
 			<form action="add_aip" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
 					<div class="modal-header">						
-						<h4 class="modal-title">Add Employee</h4>
+						<h4 class="modal-title">Add AIP Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
@@ -115,7 +115,8 @@
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+			<form action="editaip" method="post" enctype="multipart/form-data" id="editForm">
+                      {{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -123,20 +124,20 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" id="EditName" required>
+							<input name="EditName" type="text" class="form-control" id="EditName" required>
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<input type="text" class="form-control" id="EditAddress" required>
+							<input name="EditAddress" type="text" class="form-control" id="EditAddress" required>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-              				<input type="text" class="form-control" id="EditContact" required>
+              				<input name="EditContact" type="text" class="form-control" id="EditContact" required>
 							<!-- <textarea class="form-control" id="phone" required></textarea> -->
 						</div>
 						<div class="form-group">
 							<label>Age</label>
-							<input type="text" class="form-control" id="EditAge" required>
+							<input name="EditAge" type="text" class="form-control" id="EditAge" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -206,7 +207,7 @@
                       $('#EditAddress').val(data[2]);
                       $('#EditContact').val(data[3]);
                       $('#EditAge').val(data[4]);
-                      // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                      $('#editForm').attr('action', 'editaip/'+data[0]);
                       $('#editEmployeeModal').modal('show');
                   });
               });

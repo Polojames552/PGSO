@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHdcsTable extends Migration
+class CreateEssesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateHdcsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hdcs', function (Blueprint $table) {
+        Schema::create('esses', function (Blueprint $table) {
             $table->id();
-            $table->string('hdc_name');
+            $table->string('ess_name');
             $table->string('number');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateHdcsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hdcs');
+        Schema::dropIfExists('esses');
     }
 }

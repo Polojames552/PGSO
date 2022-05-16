@@ -27,4 +27,22 @@ class AssetController extends Controller
         $user->delete();
         return redirect('Assets')->with('message', 'The data is successfully deleted!');
     }
+    public function update_asset(Request $request, $id)
+    {
+        $Product_name = $request->input('EditProduct_name');
+        $Quantity = $request->input('EditQuantity');
+        $Condition = $request->input('EditCondition');
+        $Price = $request->input('EditPrice');
+       
+        DB::table('assets')
+        ->where('id', $id)
+        ->update(array(
+        'Product_name' => $Product_name,
+        'Quantity' => $Quantity,
+        'Condition' => $Condition,
+        'Price' => $Price
+        ));
+
+        return redirect('Assets')->with('message','Data updated successfully!');;
+    }
 }

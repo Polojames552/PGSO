@@ -35,18 +35,18 @@
                                         <tr>
 											<th>ID</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>Quantity</th>
+                                            <th>Status</th>
+                                            <th>Price</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
 											<th>ID</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>Quantity</th>
+                                            <th>Status</th>
+                                            <th>Price</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -77,7 +77,7 @@
 				<form action="asset" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
 					<div class="modal-header">						
-						<h4 class="modal-title">Add Employee</h4>
+						<h4 class="modal-title">Add Asset Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 
@@ -112,28 +112,29 @@
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+			<form action="editasset" method="post" enctype="multipart/form-data" id="editForm">
+                      {{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" id="Product_name" required>
+							<label>Product Name</label>
+							<input name="EditProduct_name" type="text" class="form-control" id="Product_name" required>
 						</div>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" id="Quantity" required>
+							<label>Quantity</label>
+							<input name="EditQuantity" type="text" class="form-control" id="Quantity" required>
 						</div>
 						<div class="form-group">
-							<label>Phone</label>
-              			<input type="email" class="form-control" id="Condition" required>
+							<label>Condition</label>
+              			<input name="EditCondition" type="text" class="form-control" id="Condition" required>
 							<!-- <textarea class="form-control" id="phone" required></textarea> -->
 						</div>
 						<div class="form-group">
-							<label>Role</label>
-							<input type="email" class="form-control" id="Price" required>
+							<label>Price</label>
+							<input name="EditPrice" type="text" class="form-control" id="Price" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -206,7 +207,7 @@
                       $('#Quantity').val(data[2]);
                       $('#Condition').val(data[3]);
                       $('#Price').val(data[4]);
-                      // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                      $('#editForm').attr('action', 'editasset/'+data[0]);
                       $('#editEmployeeModal').modal('show');
                   });
               });
