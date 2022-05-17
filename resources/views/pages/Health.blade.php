@@ -34,6 +34,7 @@
 								                <button class="btn btn-danger" data-toggle="modal">Export to PDF</button> -->
                                 <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
                                 <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button>
+                                <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
                             </p>
 					    </div>
                             <div class="card-body">
@@ -338,7 +339,28 @@
 			</div>
 		</div>
 	</div>
-    
+  <!-- Delete End -->
+  	<!-- PDF-->
+	<div id="PDFModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+			<form action="PDF_Form" method="post" enctype="multipart/form-data" id="pdfForm">
+                      {{ csrf_field() }}
+                      a=>Continue Download to PDF?</p>
+					<div class="modal-sess">	
+						<p a=>Continue Download to PDF?</p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="No">
+						<input type="submit" class="btn btn-primary" value="Yes">
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+  <!-- PDF End -->
         </div>
       </div>
     </div>

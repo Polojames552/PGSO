@@ -14,6 +14,7 @@ use App\Http\Controllers\SssController;
 use App\Http\Controllers\SwController;
 use App\Http\Controllers\EssController;
 use App\Http\Controllers\OtherController;
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,6 +100,10 @@ Route::group(['middleware' => 'auth'], function () {
 	// 	return view('pages.Others');
 	// })->name('Others');
 
+	// Route::get('GPSS', function () {
+	// 	return view('pages.GPSS');
+	// })->name('GPSS');
+
 	Route::get('AIP',[App\Http\Controllers\AipController::class ,'AIP_show'])->name('AIP');
 	Route::get('Assets',[App\Http\Controllers\AssetController::class ,'Assets_show'])->name('Assets');
 	Route::get('Health',[App\Http\Controllers\HealthController::class ,'Health_show'])->name('Health');
@@ -108,16 +113,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('SW',[App\Http\Controllers\SwController::class ,'Sw_show'])->name('SW');
 	Route::get('ESS',[App\Http\Controllers\EssController::class ,'Ess_show'])->name('ESS');
 	Route::get('Others',[App\Http\Controllers\OtherController::class ,'Other_show'])->name('Others');
+	Route::get('Pdf',[App\Http\Controllers\PdfController::class ,'GetHealthData'])->name('Pdf');
 	
-	
-
-	// Route::get('GPSS', function () {
-	// 	return view('pages.GPSS');
-	// })->name('GPSS');
-
-
-
-
+	// PDF
+	Route::post('PDF_Form',[PdfController::class ,'PDF_health']);
 
 
 	Route::get('reports', function () {
