@@ -26,6 +26,7 @@ class CreateHealthsTable extends Migration
             $table->string('Hospital_Eq');
             $table->string('FurnitureNFixtures');
             $table->string('Motor_Vehicles');
+            $table->string('Info_Tech');
             $table->string('Other_Machine_Eq');
             $table->string('Other_Asset');
             $table->string('Remark');

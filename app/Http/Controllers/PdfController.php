@@ -10,15 +10,22 @@ class PdfController extends Controller
 {
     function GetHealthData(){
         $health = DB::table('healths')->get();
-        return view('Pdf',['health'=>$health]);
+        $count = DB::table('healths')->count();
+        return view('Pdf',['health'=>$health, 'count'=>$count]);
     }
-    // function PDF_health(){
-    //       $health = health::all();
-    //   // share data to view
-    //   view()->share('pages.Health',$health);
-    //   $pdf = PDF::loadView('Pdf', $health);
-    //   // download PDF file with download method
-    //   return $pdf->download('pdf_file.pdf');
-    // }
+    function PDF_health(){
+      $health = health::all();
+       view()->share('pages.Health',$health);
+      $pdf = PDF::loadView('Pdf', $health);
+      return $pdf->download('pdf_file.pdf');    
+    }
+    function Health_Export(){
+        $health = health::all();
+        $count = DB::table('healths')->count();
+        $pdf = PDF::loadView('Pdf',[
+            'health'=>$health, 'count'=>$count
+        ]);
+        return $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif'])->setPaper('legal', 'landscape')->download('PGSO_Health.pdf');
+    }
  
 }

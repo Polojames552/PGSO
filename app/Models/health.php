@@ -20,6 +20,7 @@ class health extends Model
         'Hospital_Eq',
         'FurnitureNFixtures',
         'Motor_Vehicles',
+        'Info_Tech',
         'Other_Machine_Eq',
         'Other_Asset',
         'Remark',

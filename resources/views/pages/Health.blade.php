@@ -28,15 +28,29 @@
 							@endif
 					    	</div>
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
-                        <div class="col-sm-12">
-                            <p align="right">
+                             
+                    <div class="col-sm-12">
+                        <div class="dropdown">
                                <!-- <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Add New Record</button>
 								                <button class="btn btn-danger" data-toggle="modal">Export to PDF</button> -->
                                 <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
-                                <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button>
+                                <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
-                            </p>
-					    </div>
+                                <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                  <li><a id="exportmenu" href="{{route('Export_PDF')}}">PDF</a></li>
+                                  <li><a id="exportmenu" href="#">Excel</a></li>
+                                  <li><a id="exportmenu" href="#">Import Data</a></li>
+                                </ul>
+                            </div>
+                      </div>
+                      <style>
+                        #exportmenu:hover{
+                          color: #fff;
+                          background-color: rgba(87, 163, 255, 0.85);  /* changed to blue */
+                          border-color: rgba(87, 163, 255, 0.85);  /* changed to blue */
+                        }
+                      </style>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="TableData">
                                     <thead>
@@ -52,11 +66,11 @@
                                             <th>Hospital Equipment</th>
                                             <th>Furniture & Fixtures</th>
                                             <th>MotorVehicles</th>
+                                            <th>Information Technology</th>
                                             <th>Other Machineries Equipment</th>
                                             <th>Other Asset</th>
                                             <th>Remark</th>
                                             <th>Operations</th>
-                                           
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -72,6 +86,7 @@
                                             <th>Hospital Equipment</th>
                                             <th>Furniture & Fixtures</th>
                                             <th>MotorVehicles</th>
+                                            <th>Information Technology</th>
                                             <th>Other Machineries Equipment</th>
                                             <th>Other Asset</th>
                                             <th>Remark</th>
@@ -92,6 +107,7 @@
                                         <td>{{$health->Hospital_Eq}}</td>
                                         <td>{{$health->FurnitureNFixtures}}</td>
                                         <td>{{$health->Motor_Vehicles}}</td>
+                                        <td>{{$health->Info_Tech}}</td>
                                         <td>{{$health->Other_Machine_Eq}}</td>
                                         <td>{{$health->Other_Asset}}</td>
                                         <td>{{$health->Remark}}</td>
@@ -185,23 +201,28 @@
                       <label>Furniture And Fixtures</label>
                       <input name="FurnitureNFixtures" type="text" class="form-control" >
                     </div>
-                  
                     <div class="col-4">
-                      <label>Other Machineries & Equipment</label>
-                      <input name="Other_Machine_Eq" type="text" class="form-control" >
+                      <label>Information Technology</label>
+                      <input name="Info_Tech" type="text" class="form-control" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-6">
+                      <label>Other Machineries & Equipment</label>
+                      <input name="Other_Machine_Eq" type="text" class="form-control" >
+                    </div>
+                    <div class="col-6">
                       <label>Other Asset</label>
                       <input name="Other_Asset" type="text" class="form-control" >
                     </div>
-                    <div class="col-6">
-                      <label>Remark</label>
-                      <input name="Remark" type="text" class="form-control" >
-                    </div>
                 </div>
+                <div class="form-group">
+                  <div class="col-12">
+                        <label>Remark</label>
+                        <input name="Remark" type="text" class="form-control" >
+                  </div>	
+						    </div>		
                 <br>
             </div>
 					  <div class="modal-footer">
@@ -265,7 +286,6 @@
                       <label>Motor Vehicles</label>
                       <input id="EditMotor_Vehicles" name="EditMotor_Vehicles" type="text" class="form-control" >
                     </div>
-                  
                     <div class="col-4">
                       <label>Office Equipment</label>
                       <input id="EditOffice_Eq" name="EditOffice_Eq" type="text" class="form-control" >
@@ -276,7 +296,6 @@
                     </div>
                 </div>
                 <br>
-         
                 <div class="row">
                     <div class="col-4">
                       <label>Med. Dental & Lab. equipment</label>
@@ -286,23 +305,28 @@
                       <label>Furniture And Fixtures</label>
                       <input id="EditFurnitureNFixtures" name="EditFurnitureNFixtures" type="text" class="form-control" >
                     </div>
-                  
                     <div class="col-4">
-                      <label>Other Machineries & Equipment</label>
-                      <input id="EditOther_Machine_Eq" name="EditOther_Machine_Eq" type="text" class="form-control" >
+                      <label>Information Technology</label>
+                      <input id="EditInfo_Tech" name="EditInfo_Tech" type="text" class="form-control" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-6">
+                      <label>Other Machineries & Equipment</label>
+                      <input id="EditOther_Machine_Eq" name="EditOther_Machine_Eq" type="text" class="form-control" >
+                    </div>
+                    <div class="col-6">
                       <label>Other Asset</label>
                       <input id="EditOther_Asset" name="EditOther_Asset" type="text" class="form-control" >
                     </div>
-                    <div class="col-6">
-                      <label>Remark</label>
-                      <input id="EditRemark" name="EditRemark" type="text" class="form-control" >
-                    </div>
                 </div>
+              <div class="form-group">
+                <div class="col-12">
+                    <label>Remark</label>
+                    <input id="EditRemark" name="EditRemark" type="text" class="form-control" >
+                </div>	
+              </div>	
                 <br>
             </div>
 					<div class="modal-footer">
@@ -345,15 +369,19 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 
-			<form action="PDF_Form" method="post" enctype="multipart/form-data" id="pdfForm">
-                      {{ csrf_field() }}
-                      a=>Continue Download to PDF?</p>
-					<div class="modal-sess">	
-						<p a=>Continue Download to PDF?</p>
+			<form action="{{route('Export_PDF')}}" method="get" enctype="multipart/form-data" id="pdfForm">
+            {{ csrf_field() }}
+          <div class="modal-header">						
+						<h4 class="modal-title">Download PDF</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">	
+            <p class="text-warning"><small>Data will be save to PDF.</small></p>
+						<p>Continue to Download PDF?</p>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-danger" data-dismiss="modal" value="No">
-						<input type="submit" class="btn btn-primary" value="Yes">
+            <input type="submit" class="btn btn-primary" value="yes">
 					</div>
 				</form>
 
@@ -368,7 +396,6 @@
 </div>
 
 <script>
-        
         //   function sample() {
         //   var ajax = new XMLHttpRequest();
         //   var method = "GET";
@@ -522,9 +549,10 @@
                       $('#EditHospital_Eq').val(data[8]);
                       $('#EditFurnitureNFixtures').val(data[9]);
                       $('#EditMotor_Vehicles').val(data[10]);
-                      $('#EditOther_Machine_Eq').val(data[11]);
-                      $('#EditOther_Asset').val(data[12]);
-                      $('#EditRemark').val(data[13]);
+                      $('#EditInfo_Tech').val(data[11]);
+                      $('#EditOther_Machine_Eq').val(data[12]);
+                      $('#EditOther_Asset').val(data[13]);
+                      $('#EditRemark').val(data[14]);
                       // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
                       $('#editForm').attr('action', 'edithealth/'+data[0]);
                       $('#editEmployeeModal').modal('show');

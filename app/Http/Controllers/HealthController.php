@@ -26,6 +26,7 @@ class HealthController extends Controller
         $data->Hospital_Eq = $request->input('Hospital_Eq');
         $data->FurnitureNFixtures = $request->input('FurnitureNFixtures');
         $data->Motor_Vehicles = $request->input('Motor_Vehicles');
+        $data->Info_Tech = $request->input('Info_Tech');
         $data->Other_Machine_Eq = $request->input('Other_Machine_Eq');
         $data->Other_Asset = $request->input('Other_Asset');
         $data->Remark = $request->input('Remark');
@@ -52,6 +53,7 @@ class HealthController extends Controller
         $Hospital_Eq = $request->input('EditHospital_Eq');
         $FurnitureNFixtures = $request->input('EditFurnitureNFixtures');
         $Motor_Vehicles = $request->input('EditMotor_Vehicles');
+        $Info_Tech = $request->input('EditInfo_Tech');
         $Other_Machine_Eq = $request->input('EditOther_Machine_Eq');
         $Other_Asset = $request->input('EditOther_Asset');
         $Remark = $request->input('EditRemark');
@@ -70,6 +72,7 @@ class HealthController extends Controller
         'Hospital_Eq' => $Hospital_Eq,
         'FurnitureNFixtures' => $FurnitureNFixtures,
         'Motor_Vehicles' => $Motor_Vehicles,
+        'Info_Tech' => $Info_Tech,
         'Other_Machine_Eq' => $Other_Machine_Eq,
         'Other_Asset' => $Other_Asset,
         'Remark' => $Remark
