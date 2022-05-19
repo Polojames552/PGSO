@@ -9,12 +9,7 @@
 
     <!-- </form> -->
 
-    <center>
-        <p>INVENTORY OF SERVICE EQUIPMENT</p>
-        <p>As of December 2021</p>
-        <p>PRIETO DIAZ MEDICARE HOSPITAL</p>
-        <p>Prieto Diaz Sorsogon</p>
-    </center>
+   
 </head>
 <body>
     <style>
@@ -26,6 +21,9 @@
             border: 1px solid #ddd;
             padding: 8px;
         }
+        p.small {
+        line-height: 1.3;
+        }
     </style>
         <!-- <div class="col-auto-float-right ml-auto">
             <div class="btn-group btn-group-sm">
@@ -34,8 +32,18 @@
                 <button class="btn btn-white"><a href="" @click.prevent="printme" target="_blank">Print</a></button>
             </div>
         </div> -->
+               
+          <p class="small" align="center">
+          INVENTORY OF SERVICE EQUIPMENT <br>
+          As of December 2021<br>
+          PRIETO DIAZ MEDICARE HOSPITAL<br>
+          Prieto Diaz Sorsogon<br>
+          </p>
+              
+            
     <table id="emp">
         <thead>
+       
             <tr>
                 <th>Property No.</th>
                 <th>Description</th>
@@ -83,7 +91,7 @@
         <?php $page = 1 ?>
             @foreach($health as $health)
             <tr>
-            @if($n == 17)
+            @if($n == 18)
                 <th></th>
                 <th>Page Total</th>
                 <th></th>
@@ -110,7 +118,7 @@
                 <?php $page_Motor_V = 0?>
                 <?php $page_Information_Tech = 0?>
                 <?php $page_Other_Machine_Eq = 0?>
-            @elseif($n == 39)
+            @elseif($n == 40)
                 <th></th>
                 <th>Page Total</th>
                 <th></th>
@@ -223,6 +231,8 @@
     <!-- <center><p class="sign">Page</p></center> -->
 
     <br>
+    <br>
+    <br>
         <div class="container">
             <div class="row">
                     <div class="column">
@@ -253,6 +263,9 @@
   width: 30%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
+}
+.column1 {
+  text-align: center;
 }
 p.sign {
   font-size: 19px;
