@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\health;
 use DB;
+use App\Exports\HealthExport;
+use Maatwebsite\Excel\Facades\Excel;
 class HealthController extends Controller
 {
     function Health_show(){
@@ -79,5 +81,9 @@ class HealthController extends Controller
         ));
 
         return redirect('Health')->with('message','Data updated successfully!');;
+    }
+    public function export()
+    {
+      return Excel::download(new HealthExport, 'Health_File.xlsx');
     }
 }

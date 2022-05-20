@@ -39,11 +39,18 @@
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                   <li><a id="exportmenu" href="{{route('Export_PDF')}}">PDF</a></li>
-                                  <li><a id="exportmenu" href="#">Excel</a></li>
+                                  <form action="health_export" method="GET" id="health_Excel">
+                                    <li><a id="exportmenu" onclick="myFunction()">Excel</a></li>
+                                  </form>
                                   <li><a id="exportmenu" href="#">Import Data</a></li>
                                 </ul>
                             </div>
                       </div>
+                      <script>
+                          function myFunction() {
+                              document.getElementById("health_Excel").submit();
+                          }
+                      </script>
                       <style>
                         #exportmenu:hover{
                           color: #fff;

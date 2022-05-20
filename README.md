@@ -72,3 +72,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 4. Setup database in .env file
 5. php artisan migrate:fresh
 6. php artisan migrate --seed
+7. composer require dompdf/dompdf
+7. composer require maatwebsite/excel

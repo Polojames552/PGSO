@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('SW',[App\Http\Controllers\SwController::class ,'Sw_show'])->name('SW');
 	Route::get('ESS',[App\Http\Controllers\EssController::class ,'Ess_show'])->name('ESS');
 	Route::get('Others',[App\Http\Controllers\OtherController::class ,'Other_show'])->name('Others');
-	Route::get('Pdf',[App\Http\Controllers\PdfController::class ,'GetHealthData'])->name('Pdf');
+	Route::get('PdfHealth',[App\Http\Controllers\PdfController::class ,'GetHealthData'])->name('PdfHealth');
 	
 
 
@@ -122,9 +122,11 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('reports');
 
 
-	// PDF
+	// PDF Export
 	// Route::post('PDF_Form',[App\Http\Controllers\PdfController::class,'PDF_health'])->name('PDF_Form');
 	Route::get('Export_PDF',[App\Http\Controllers\PdfController::class,'Health_Export'])->name('Export_PDF');
+	// Excel Export
+	Route::get('/health_export',[HealthController::class ,'export']);
 	// Delete Data 
 	Route::delete('assets-delete/{id}', [AssetController::class ,'destroy']);
 	Route::delete('aip-delete/{id}', [AipController::class ,'destroy']);
