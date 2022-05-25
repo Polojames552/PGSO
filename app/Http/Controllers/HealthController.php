@@ -17,21 +17,80 @@ class HealthController extends Controller
     {
        
         $data = new health();
-        $data->Property_No = $request->input('Property_No');
-        $data->Description = $request->input('Description');
-        $data->Date_Aquired = $request->input('Date_Aquired');
-        $data->Aquisition_Cost = $request->input('Aquisition_Cost');
-        $data->Accountable_Person = $request->input('Accountable_Person');
-        $data->Location = $request->input('Location');
-        $data->Med_dental_equipment = $request->input('Med_dental_equipment');
-        $data->Office_Eq = $request->input('Office_Eq');
-        $data->Hospital_Eq = $request->input('Hospital_Eq');
-        $data->FurnitureNFixtures = $request->input('FurnitureNFixtures');
-        $data->Motor_Vehicles = $request->input('Motor_Vehicles');
-        $data->Info_Tech = $request->input('Info_Tech');
-        $data->Other_Machine_Eq = $request->input('Other_Machine_Eq');
-        $data->Other_Asset = $request->input('Other_Asset');
-        $data->Remark = $request->input('Remark');
+        $data->Property_No = $request->input('Property_No'); /////Required
+        $data->Description = $request->input('Description'); /////Required
+        if($request->input('Date_Aquired') == ""){
+            $data->Date_Aquired = "";
+        }else{
+            $data->Date_Aquired = $request->input('Date_Aquired');
+        }
+        $data->Aquisition_Cost = $request->input('Aquisition_Cost');////Required
+        // $data->Accountable_Person = $request->input('Accountable_Person');
+        if($request->input('Accountable_Person') == ""){
+            $data->Accountable_Person = "";
+        }else{
+            $data->Accountable_Person = $request->input('Accountable_Person');
+        }
+        // $data->Location = $request->input('Location');
+        if($request->input('Location') == ""){
+            $data->Location = "";
+        }else{
+            $data->Location = $request->input('Location');
+        }
+        // $data->Med_dental_equipment = $request->input('Med_dental_equipment');
+        if($request->input('Med_dental_equipment') == ""){
+            $data->Med_dental_equipment = "";
+        }else{
+            $data->Med_dental_equipment = $request->input('Med_dental_equipment');
+        }
+        // $data->Office_Eq = $request->input('Office_Eq');
+        if($request->input('Office_Eq') == ""){
+            $data->Office_Eq = "";
+        }else{
+            $data->Office_Eq = $request->input('Office_Eq');
+        }
+        // $data->Hospital_Eq = $request->input('Hospital_Eq');
+        if($request->input('Hospital_Eq') == ""){
+            $data->Hospital_Eq = "";
+        }else{
+            $data->Hospital_Eq = $request->input('Hospital_Eq');
+        }
+        // $data->FurnitureNFixtures = $request->input('FurnitureNFixtures');
+        if($request->input('FurnitureNFixtures') == ""){
+            $data->FurnitureNFixtures = "";
+        }else{
+            $data->FurnitureNFixtures = $request->input('FurnitureNFixtures');
+        }
+        // $data->Motor_Vehicles = $request->input('Motor_Vehicles');
+        if($request->input('Motor_Vehicles') == ""){
+            $data->Motor_Vehicles = "";
+        }else{
+            $data->Motor_Vehicles = $request->input('Motor_Vehicles');
+        }
+        // $data->Info_Tech = $request->input('Info_Tech');
+        if($request->input('Info_Tech') == ""){
+            $data->Info_Tech = "";
+        }else{
+            $data->Info_Tech = $request->input('Info_Tech');
+        }
+        //$data->Other_Machine_Eq = $request->input('Other_Machine_Eq');
+        if($request->input('Other_Machine_Eq') == ""){
+            $data->Other_Machine_Eq = "";
+        }else{
+            $data->Other_Machine_Eq = $request->input('Other_Machine_Eq');
+        }
+        // $data->Other_Asset = $request->input('Other_Asset');
+        if($request->input('Other_Asset') == ""){
+            $data->Other_Asset = "";
+        }else{
+            $data->Other_Asset = $request->input('Other_Asset');
+        }
+        // $data->Remark = $request->input('Remark');
+        if($request->input('Remark') == ""){
+            $data->Remark = "";
+        }else{
+            $data->Remark = $request->input('Remark');
+        }
   
         $data->save();
         return redirect('Health')->with('message','Data Added Successfully!');;

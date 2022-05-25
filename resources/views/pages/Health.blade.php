@@ -28,34 +28,41 @@
 							@endif
 					    	</div>
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
-                             
                     <div class="col-sm-12">
                         <div class="dropdown">
-                               <!-- <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Add New Record</button>
-								                <button class="btn btn-danger" data-toggle="modal">Export to PDF</button> -->
-                                <button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
+                                <button href="#addEmployeeModal" class="btn btn-primary" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
+                                <!-- <button class="btn btn-primary"><a href=""@click.prevent="printme" target="_blank">PDF</a></button> -->
+                                <!-- <a href="#" onclick="window.open('PdfHealth', '_blank', 'fullscreen=yes'); return false;">MyPDF</a>  -->
+                                
                                 <ul class="dropdown-menu">
                                   <li><a id="exportmenu" href="{{route('Export_PDF')}}">PDF</a></li>
                                   <form action="health_export" method="GET" id="health_Excel">
                                     <li><a id="exportmenu" onclick="myFunction()">Excel</a></li>
                                   </form>
-                                  <li><a id="exportmenu" href="#">Import Data</a></li>
+                                  <li><a id="exportmenu" href="#" onclick="window.open('assets/PGSO_Health.pdf', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
+                                  <!-- <li><a id="exportmenu" href="{{route('PDFpreview')}}">My PDF preview</a></li> -->
                                 </ul>
-                            </div>
+                                <button class="btn btn-success"><i class="fas fa-file-import"></i> Import Data</button>
+                              
+                              </div>
                       </div>
                       <script>
                           function myFunction() {
                               document.getElementById("health_Excel").submit();
                           }
+                          //  var link = document.createElement('a');
+                          //  link.href = url;
+                          //  link.download = 'file.pdf';
+                          //  link.dispatchEvent(new MouseEvent('click'));
                       </script>
                       <style>
                         #exportmenu:hover{
                           color: #fff;
-                          background-color: rgba(87, 163, 255, 0.85);  /* changed to blue */
-                          border-color: rgba(87, 163, 255, 0.85);  /* changed to blue */
+                          background-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
+                          border-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
                         }
                       </style>
                             <div class="card-body">
@@ -163,7 +170,7 @@
             <div class="form-group">
               <div class="col-12">
                 <label>Accountable Person</label>
-                <input name="Accountable_Person" type="text" class="form-control" required>
+                <input name="Accountable_Person" type="text" class="form-control">
               </div>	
 						</div>		
 

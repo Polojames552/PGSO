@@ -33,17 +33,22 @@
             </div>
         </div> -->
                
-          <p class="small" align="center">
+          <!-- <p class="small" align="center">
+          INVENTORY OF SERVICE EQUIPMENT <br>
+          As of December 2021<br>
+          PRIETO DIAZ MEDICARE HOSPITAL<br>
+          Prieto Diaz Sorsogon<br>
+          </p> -->
+              
+            
+    <table id="emp">
+        <thead>
+        <p class="small" align="center">
           INVENTORY OF SERVICE EQUIPMENT <br>
           As of December 2021<br>
           PRIETO DIAZ MEDICARE HOSPITAL<br>
           Prieto Diaz Sorsogon<br>
           </p>
-              
-            
-    <table id="emp">
-        <thead>
-       
             <tr>
                 <th>Property No.</th>
                 <th>Description</th>

@@ -115,7 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('Others',[App\Http\Controllers\OtherController::class ,'Other_show'])->name('Others');
 	Route::get('PdfHealth',[App\Http\Controllers\PdfController::class ,'GetHealthData'])->name('PdfHealth');
 	
-
+	Route::get('PDFpreview', function () {
+		return view('PDFpreview');
+	})->name('PDFpreview');
 
 	Route::get('reports', function () {
 		return view('pages.reports');
