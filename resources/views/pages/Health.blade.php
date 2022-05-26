@@ -30,33 +30,30 @@
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                     <div class="col-sm-12">
                         <div class="dropdown">
+                      
                                 <button href="#addEmployeeModal" class="btn btn-primary" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
-                                <!-- <button class="btn btn-primary"><a href=""@click.prevent="printme" target="_blank">PDF</a></button> -->
-                                <!-- <a href="#" onclick="window.open('PdfHealth', '_blank', 'fullscreen=yes'); return false;">MyPDF</a>  -->
-                                
                                 <ul class="dropdown-menu">
                                   <li><a id="exportmenu" href="{{route('Export_PDF')}}">PDF</a></li>
                                   <form action="health_export" method="GET" id="health_Excel">
                                     <li><a id="exportmenu" onclick="myFunction()">Excel</a></li>
                                   </form>
-                                  <li><a id="exportmenu" href="#" onclick="window.open('assets/PGSO_Health.pdf', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
+                                  <li><a id="exportmenu" href="#" onclick="window.open('PdfHealth', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
                                   <!-- <li><a id="exportmenu" href="{{route('PDFpreview')}}">My PDF preview</a></li> -->
+                                  <li><a id="exportmenu" onClick="window.print()">Print Preview</a></li>
                                 </ul>
                                 <button class="btn btn-success"><i class="fas fa-file-import"></i> Import Data</button>
-                              
                               </div>
                       </div>
                       <script>
                           function myFunction() {
                               document.getElementById("health_Excel").submit();
                           }
-                          //  var link = document.createElement('a');
-                          //  link.href = url;
-                          //  link.download = 'file.pdf';
-                          //  link.dispatchEvent(new MouseEvent('click'));
+                          // function print() {
+                          //     window.print();
+                          // }
                       </script>
                       <style>
                         #exportmenu:hover{

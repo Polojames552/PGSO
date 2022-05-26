@@ -8,7 +8,9 @@
     <!-- <form action="PDF_Form" method="post" enctype="multipart/form-data"> -->
 
     <!-- </form> -->
-
+    <!-- <script type="text/javascript">
+      window.onload = function() { window.print(); }
+    </script> -->
    
 </head>
 <body>
@@ -32,24 +34,48 @@
                 <button class="btn btn-white"><a href="" @click.prevent="printme" target="_blank">Print</a></button>
             </div>
         </div> -->
-               
-          <!-- <p class="small" align="center">
+          <p class="small" align="center">
           INVENTORY OF SERVICE EQUIPMENT <br>
           As of December 2021<br>
           PRIETO DIAZ MEDICARE HOSPITAL<br>
           Prieto Diaz Sorsogon<br>
-          </p> -->
+          </p> 
               
-            
-    <table id="emp">
-        <thead>
-        <p class="small" align="center">
-          INVENTORY OF SERVICE EQUIPMENT <br>
-          As of December 2021<br>
-          PRIETO DIAZ MEDICARE HOSPITAL<br>
-          Prieto Diaz Sorsogon<br>
-          </p>
-            <tr>
+            <style>
+                /* table.report-container{
+                   page-break-after:always; 
+                   font-size: 15px; 
+                }
+                thead.report-header{
+                   display:table-header-group; 
+                    font-size: 9px;
+                }
+                tfoot.report-footer{
+                    display:table-footer-group;
+                }   */
+               table{
+                white-space: nowrap;
+                font-size: 11px;
+               }
+               th{
+                font-size: 2px;
+               }
+            </style>
+    <table id="emp" class="report-container">
+        <thead class="report-header">
+            <!-- <tr>
+                <th class="report-header-cell">
+                    <div class="header-info">
+                        <p class="small" align="center">
+                            INVENTORY OF SERVICE EQUIPMENT <br>
+                            As of December 2021<br>
+                            PRIETO DIAZ MEDICARE HOSPITAL<br>
+                            Prieto Diaz Sorsogon<br>
+                        </p>
+                    </div>
+                </th>
+            </tr> -->
+            <tr style="width:40px">
                 <th>Property No.</th>
                 <th>Description</th>
                 <th>Date Aquired</th>
@@ -66,6 +92,11 @@
                 <th>Other Asset</th>
                 <th>Remark</th>
             </tr>
+            <!-- <td class="report-footer-cell">
+                <div class="footer-info">
+                    footer
+                </div>
+            </td> -->
         </thead>
         <tbody>
         <?php $total_Aquisition_Cost = 0?>
