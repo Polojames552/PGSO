@@ -18,7 +18,8 @@
         </a>
       </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+        <!-- <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true"> -->
+        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
           <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
           <p>{{ __('Laravel Examples') }} -->
           <i class="material-icons">person</i>
@@ -26,7 +27,8 @@
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse show" id="laravelExample">
+        <!-- <div class="collapse show" id="laravelExample"> -->
+        <div class="collapse" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -44,7 +46,12 @@
         </div>
       </li>
   
-   
+      <li class="nav-item{{ $activePage == 'ProvincialAdminOffice' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('ProvincialAdminOffice') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('Provincial Administrator Office') }}</p>
+        </a>
+      </li>
       <li class="nav-item{{ $activePage == 'AIP' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('AIP') }}">
           <i class="material-icons"></i>
@@ -70,10 +77,37 @@
             <p>{{ __('HDC') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'Health' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('Health') }}">
+     
+      <li class="nav-item {{ ($activePage == 'PrietoDiazMedHospital' || $activePage == 'PrietoDiazMedHospital') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#laravelExample1" aria-expanded="false">
+          <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+          <p>{{ __('Laravel Examples') }} -->
           <i class="material-icons"></i>
-            <p>{{ __('Health') }}</p>
+          <p>{{ __('Health') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="laravelExample1">
+          <ul class="nav">
+          <li class="nav-item{{ $activePage == 'PGSOMedicalDental' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('PGSOMedicalDental') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal">{{ __('PGSO - Medical & Dental Supplies') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'PrietoDiazMedHospital' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('PrietoDiazMedHospital') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal">{{ __('Prieto-Diaz Medical Hospital') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item{{ $activePage == 'Tourism' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('Tourism') }}">
+          <i class="material-icons"></i>
+            <p>{{ __('Tourism') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'SSS' ? ' active' : '' }}">

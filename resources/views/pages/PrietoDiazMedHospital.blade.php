@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Health', 'titlePage' => __('Health')])
+@extends('layouts.app', ['activePage' => 'PrietoDiazMedHospital', 'titlePage' => __('PrietoDiazMedHospital')])
 	  
     <!-- PDFmake link reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -17,7 +17,7 @@
       <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Health
+                                Prieto-Diaz Medical Hospital
                             </div>
 
 							<div class="col-sm-12">
@@ -36,13 +36,11 @@
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                  <li><a id="exportmenu" href="{{route('Export_PDF')}}">PDF</a></li>
-                                  <form action="health_export" method="GET" id="health_Excel">
-                                    <li><a id="exportmenu" onclick="myFunction()">Excel</a></li>
-                                  </form>
-                                  <li><a id="exportmenu" href="#" onclick="window.open('PdfHealth', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
+                                  <li><a id="exportmenu" href="{{route('PrietoDiazMedHospital_PDF')}}">PDF</a></li>
+                                  <li><a id="exportmenu" href="PrietoDiazMedHospital_export">Excel</a></li>
+                                  <li><a id="exportmenu" href="#" onclick="window.open('PdfPrietoDiazMedHospital', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
                                   <!-- <li><a id="exportmenu" href="{{route('PDFpreview')}}">My PDF preview</a></li> -->
-                                  <li><a id="exportmenu" onClick="window.print()">Print Preview</a></li>
+                                  <!-- <li><a id="exportmenu" onClick="window.print()">Print Preview</a></li> -->
                                 </ul>
                                 <button class="btn btn-success"><i class="fas fa-file-import"></i> Import Data</button>
                               </div>
@@ -375,31 +373,7 @@
 		</div>
 	</div>
   <!-- Delete End -->
-  	<!-- PDF-->
-	<div id="PDFModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-			<form action="{{route('Export_PDF')}}" method="get" enctype="multipart/form-data" id="pdfForm">
-            {{ csrf_field() }}
-          <div class="modal-header">						
-						<h4 class="modal-title">Download PDF</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">	
-            <p class="text-warning"><small>Data will be save to PDF.</small></p>
-						<p>Continue to Download PDF?</p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-danger" data-dismiss="modal" value="No">
-            <input type="submit" class="btn btn-primary" value="yes">
-					</div>
-				</form>
-
-			</div>
-		</div>
-	</div>
-  <!-- PDF End -->
+  
         </div>
       </div>
     </div>
