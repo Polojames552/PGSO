@@ -11,6 +11,7 @@ class ProvincialAdminOfficeController extends Controller
 {
     function ProvincialAdminOffice_show(){
         $data = DB::table('provincial_admin_offices')->get();
+        $count = DB::table('provincial_admin_offices')->count();
         return view('pages.ProvincialAdminOffice',['data'=>$data]);
     }
     public function store(Request $request)

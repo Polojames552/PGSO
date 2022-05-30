@@ -118,6 +118,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('Tourism',[App\Http\Controllers\TourismController::class ,'Tourism_show'])->name('Tourism');
 	Route::get('ProvincialAdminOffice',[App\Http\Controllers\ProvincialAdminOfficeController::class ,'ProvincialAdminOffice_show'])->name('ProvincialAdminOffice');
 	
+	Route::get('Pdfsample', function () {
+		return view('PDF.Pdfsample');
+	})->name('Pdfsample');
+
 	Route::get('PGSOMedicalDental', function () {
 		return view('pages.PGSOMedicalDental');
 	})->name('PGSOMedicalDental');

@@ -34,15 +34,18 @@
                 <button class="btn btn-white"><a href="" @click.prevent="printme" target="_blank">Print</a></button>
             </div>
         </div> -->
+        
           <p class="small" align="center">
-          INVENTORY OF SERVICE EQUIPMENT<br>
-          As of 
-          <?php
-            $today = date("F, Y");   
-            echo $today
-          ?><br>
-          PRIETO DIAZ MEDICARE HOSPITAL<br>
-          Prieto Diaz Sorsogon<br>
+            <b>
+            INVENTORY OF SERVICE EQUIPMENT<br>
+            As of 
+            <?php
+                $today = date("F, Y");   
+                echo $today
+            ?><br>
+            PRIETO DIAZ MEDICARE HOSPITAL<br>
+            Prieto Diaz Sorsogon<br>
+            </b>
           </p> 
               
             <style>
@@ -65,8 +68,8 @@
                 font-size: 2px;
                } */
             </style>
-    <table id="emp" class="report-container">
-        <thead class="report-header">
+    <table id="emp">
+        <thead>
             <!-- <tr>
                 <th class="report-header-cell">
                     <div class="header-info">
@@ -131,7 +134,7 @@
         <?php $page = 1 ?>
             @foreach($health as $health)
             <tr>
-            @if($n == 18)
+            @if($n == 23)<!--18 -->
                 <th></th>
                 <th>Page Total</th>
                 <th></th>
@@ -158,7 +161,8 @@
                 <?php $page_Motor_V = 0?>
                 <?php $page_Information_Tech = 0?>
                 <?php $page_Other_Machine_Eq = 0?>
-            @elseif($n == 40)
+            
+            @elseif($n == 49)<!-- 40-->
                 <th></th>
                 <th>Page Total</th>
                 <th></th>
@@ -175,7 +179,7 @@
                 <th></th>
                 <th></th>
                <!-- <center><p class="sign">Page</p></center> -->
-                 <?php $n = $n - 21  ?>
+                <?php $n = $n - 25  ?> <!-- 21 -->
                 <?php $page++ ?>
                 <?php $page_Aquisition_Cost = 0?>
                 <?php $page_Med_Dental = 0?>
@@ -230,7 +234,7 @@
             @endif
             </tr>
             @endforeach
-            <tr>
+            <tr> @if($n != 24)
                 <th></th>
                 <th>Page Total</th>
                 <th></th>
@@ -246,6 +250,7 @@
                 <th><?php echo $page_Other_Machine_Eq ?></th>
                 <th></th>
                 <th></th>
+                @endif
             </tr>
             <tr>
                 <th></th>
@@ -310,9 +315,12 @@
 p.sign {
   font-size: 19px;
 }
-th{
-    font-size: 20px;
+/* th{
+  font-size: 19px;
 }
+td{
+  font-size: 15px;
+} */
 /* Clear floats after the columns */
 .row:after {
   content: "";
