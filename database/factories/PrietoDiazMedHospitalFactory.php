@@ -28,8 +28,8 @@ class PrietoDiazMedHospitalFactory extends Factory
             'Motor_Vehicles' => $this->faker->numerify(),
             'Info_Tech' => $this->faker->numerify(),
             'Other_Machine_Eq' => $this->faker->numerify(),
-            'Other_Asset' => $this->faker->numerify(),
-            'Remark' => "",
+            'Other_Asset' => " ",
+            'Remark' => " ",
         ];
     }
 }

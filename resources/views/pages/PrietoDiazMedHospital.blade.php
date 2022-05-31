@@ -21,17 +21,27 @@
                             </div>
 
 							<div class="col-sm-12">
-                            @if(session()->has('message'))
+                @if(session()->has('message'))
 								<div class="alert alert-success">
 									{{ session()->get('message') }}
 								</div>
-							@endif
+							  @endif
+                @if(count($errors) > 0)
+								<div class="alert alert-danger">
+                  Upload Validation Error <br><br>
+                  <ul>
+                    @foreach($errors->all() as $errors)
+                    <li>{{ $errors }}</li>
+                    @endforeach
+                  </ul>
+								</div>
+							  @endif
 					    	</div>
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                     <div class="col-sm-12">
                         <div class="dropdown">
                       
-                                <button href="#addEmployeeModal" class="btn btn-primary" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
+                                <button id="addData" href="#addEmployeeModal" class="btn" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
@@ -42,7 +52,7 @@
                                   <!-- <li><a id="exportmenu" href="{{route('PDFpreview')}}">My PDF preview</a></li> -->
                                   <!-- <li><a id="exportmenu" onClick="window.print()">Print Preview</a></li> -->
                                 </ul>
-                                <button class="btn btn-success"><i class="fas fa-file-import"></i> Import Data</button>
+                                    <button href="#ImportDataModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-import"></i> Import Data</button>
                               </div>
                       </div>
                       <script>
@@ -58,6 +68,9 @@
                           color: #fff;
                           background-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
                           border-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
+                        }
+                        #addData{
+                          background-color: #3477eb;
                         }
                       </style>
                             <div class="card-body">
@@ -133,7 +146,31 @@
                                 </table>
                             </div>
                         </div>
+	<!-- Import Data Modal HTML -->
+	<div id="ImportDataModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+			<form action="{{ url('/import_excel/import')}}" method="post" enctype="multipart/form-data">
+				{{ csrf_field() }}
+					<div class="modal-header">						
+						<h4 class="modal-title">Import Data</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">	
+						<p>Select Excel File to Import:</p>
+				    <input type="file" name="select_file">
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-primary" value="Import">
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+  <!--  Import Data Modal HTML -->  
                         <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
@@ -373,7 +410,7 @@
 		</div>
 	</div>
   <!-- Delete End -->
-  
+
         </div>
       </div>
     </div>

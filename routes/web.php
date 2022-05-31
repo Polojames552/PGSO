@@ -17,6 +17,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PrietoDiazMedHospitalController;
 use App\Http\Controllers\TourismController;
 use App\Http\Controllers\ProvincialAdminOfficeController;
+use App\Http\Controllers\ImportDataController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -183,6 +184,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('editother/{id}',[OtherController::class ,'update_other'])->name('editother');
 	Route::post('edittourism/{id}',[TourismController::class ,'update_tourism'])->name('edittourism');
 	Route::post('editProvincialAdmin/{id}',[ProvincialAdminOfficeController::class ,'update_ProvincialData'])->name('editProvincialAdmin');
+	//Import Data From Excel
+	Route::post('/import_excel/import',[ImportDataController::class ,'import']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
