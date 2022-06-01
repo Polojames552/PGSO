@@ -150,8 +150,7 @@
 	<div id="ImportDataModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-
-			<form action="{{ url('/import_excel/import')}}" method="post" enctype="multipart/form-data">
+			<form action="ImportPrietoDiazMedHospital" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 					<div class="modal-header">						
 						<h4 class="modal-title">Import Data</h4>

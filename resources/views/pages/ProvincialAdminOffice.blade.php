@@ -20,24 +20,34 @@
                                 Provincial Administrator's Office
                             </div>
 
-							<div class="col-sm-12">
-                            @if(session()->has('message'))
+                <div class="col-sm-12">
+                @if(session()->has('message'))
 								<div class="alert alert-success">
 									{{ session()->get('message') }}
 								</div>
-							@endif
+							  @endif
+                @if(count($errors) > 0)
+								<div class="alert alert-danger">
+                  Upload Validation Error <br><br>
+                  <ul>
+                    @foreach($errors->all() as $errors)
+                    <li>{{ $errors }}</li>
+                    @endforeach
+                  </ul>
+								</div>
+							  @endif
 					    	</div>
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                     <div class="col-sm-12">
                         <div class="dropdown">
-                                <button href="#addEmployeeModal" class="btn btn-primary" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
+                                <button href="#addEmployeeModal" id="addData" class="btn" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                   <li><a id="exportmenu" href="{{route('ProvincialAdmin_PDF')}}">PDF</a></li>
                                   <li><a id="exportmenu" href="ProvincialAdmin_Excel">Excel</a></li>
                                   <li><a id="exportmenu" href="#" onclick="window.open('PdfProvincialAdmin', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
                                 </ul>
-                                <button class="btn btn-success"><i class="fas fa-file-import"></i> Import Data</button>
+                                <button href="#ImportDataModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-import"></i> Import Data</button>
                               </div>
                       </div>
                       <script>
@@ -51,14 +61,17 @@
                           background-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
                           border-color: rgba(246, 39, 36, 0.8);  /* changed to blue */
                         }
+                        #addData{
+                          background-color: #3477eb;
+                        }
                       </style>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="TableData">
                                     <thead>
                                         <tr>
-                                            <th>Date Aquired</th>
+                                            <th>Property No.</th>
                                             <th>Particulars</th>
-											                      <th>Property No.</th>
+                                            <th>Date Aquired</th>
                                             <th>Quantity</th>
                                             <th>Unit Cost</th>
                                             <th>Total Cost</th>
@@ -70,9 +83,9 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+											                      <th>Property No.</th>
                                             <th>Date Aquired</th>
                                             <th>Particulars</th>
-											<th>Property No.</th>
                                             <th>Quantity</th>
                                             <th>Unit Cost</th>
                                             <th>Total Cost</th>
@@ -85,9 +98,9 @@
                                     <tbody>
                                     @foreach($data as $data) 
                                         <tr>
-                                        <td>{{$data->Date_Aquired}}</td>
-                                        <td>{{$data->Particulars}}</td>
                                         <td>{{$data->Property_No}}</td>
+                                        <td>{{$data->Particulars}}</td>
+                                        <td>{{$data->Date_Aquired}}</td>
                                         <td>{{$data->Quantity}}</td>
                                         <td>{{$data->Unit_Cost}}</td>
                                         <td>{{$data->Total_Cost}}</td>
@@ -107,7 +120,31 @@
                                 </table>
                             </div>
                         </div>
+	<!-- Import Data Modal HTML -->
+	<div id="ImportDataModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+      <form action="ImportProvincialAdminOffice" method="post" enctype="multipart/form-data">
+				{{ csrf_field() }}
+					<div class="modal-header">						
+						<h4 class="modal-title">Import Data</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">	
+						<p>Select Excel File to Import:</p>
+				    <input type="file" name="select_file">
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-primary" value="Import">
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+  <!--  Import Data Modal HTML -->  
                         <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
@@ -297,7 +334,7 @@
                       }).get();
                       $('#delete_youth_id').val(data[0]);
                     //   $('#youth_name').val(data[1]);
-                      $('#delete_modal_Form').attr('action', 'ProvincialAdmin-delete/'+data[2]);
+                      $('#delete_modal_Form').attr('action', 'ProvincialAdmin-delete/'+data[0]);
                       $('#deleteEmployeeModal').modal('show');
                   });
 
@@ -307,10 +344,10 @@
                       var data = $tr.children("td").map(function(){
                           return $(this).text();
                       }).get();
-
-                      $('#EditDate_Aquired').val(data[0]);
+                      EditDate_Aquired
+                      $('#EditProperty_No').val(data[0]);
                       $('#EditParticulars').val(data[1]);
-                      $('#EditProperty_No').val(data[2]);
+                      $('#EditDate_Aquired').val(data[2]);
                       $('#EditQuantity').val(data[3]);
                       $('#EditUnit_Cost').val(data[4]);
                       $('#EditTotal_Cost').val(data[5]);
@@ -319,7 +356,7 @@
                       $('#EditRemark').val(data[8]);
                      
                       // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
-                      $('#editForm').attr('action', 'editProvincialAdmin/'+data[2]);
+                      $('#editForm').attr('action', 'editProvincialAdmin/'+data[0]);
                       $('#editEmployeeModal').modal('show');
                   });
               });

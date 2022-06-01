@@ -19,9 +19,9 @@ class ProvincialAdminOfficeExport implements FromCollection, WithHeadings, Shoul
     public function collection()
     {
         return ProvincialAdminOffice::select(
-            'Date_Aquired',
-            'Particulars',
             'Property_No',
+            'Particulars',
+            'Date_Aquired',
             'Quantity',
             'Unit_Cost',
             'Total_Cost',
@@ -34,9 +34,9 @@ class ProvincialAdminOfficeExport implements FromCollection, WithHeadings, Shoul
     public function headings(): array
     {
         return [
-            'Date_Aquired',
-            'Particulars',
             'Property_No',
+            'Particulars',
+            'Date_Aquired',
             'Quantity',
             'Unit_Cost',
             'Total_Cost',

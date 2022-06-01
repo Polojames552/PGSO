@@ -185,7 +185,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('edittourism/{id}',[TourismController::class ,'update_tourism'])->name('edittourism');
 	Route::post('editProvincialAdmin/{id}',[ProvincialAdminOfficeController::class ,'update_ProvincialData'])->name('editProvincialAdmin');
 	//Import Data From Excel
-	Route::post('/import_excel/import',[ImportDataController::class ,'import']);
+	Route::post('ImportPrietoDiazMedHospital',[ImportDataController::class ,'PrietoDiazMedHospitalImport']);
+	Route::post('ImportProvincialAdminOffice',[ImportDataController::class ,'ProvincialAdminOfficeImport']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

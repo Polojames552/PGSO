@@ -107,67 +107,67 @@ class PrietoDiazMedHospitalController extends Controller
         $Property_No = $request->input('EditProperty_No');
         $Description = $request->input('EditDescription');
         if($request->input('EditDate_Aquired') == ""){
-            $Date_Aquired = "";
+            $Date_Aquired = " ";
         }else{
             $Date_Aquired = $request->input('EditDate_Aquired');
         }
         if($request->input('EditAquisition_Cost') == ""){
-            $Aquisition_Cost = "";
+            $Aquisition_Cost = " ";
         }else{
             $Aquisition_Cost = $request->input('EditAquisition_Cost');
         }
         if($request->input('EditAccountable_Person') == ""){
-            $Accountable_Person = "";
+            $Accountable_Person = " ";
         }else{
             $Accountable_Person = $request->input('EditAccountable_Person');
         }
         if($request->input('EditLocation') == ""){
-            $Location = "";
+            $Location = " ";
         }else{
             $Location = $request->input('EditLocation');
         }
         if($request->input('EditMed_dental_equipment') == ""){
-            $Med_dental_equipment = "";
+            $Med_dental_equipment = " ";
         }else{
             $Med_dental_equipment = $request->input('EditMed_dental_equipment');
         }
         if($request->input('EditOffice_Eq') == ""){
-            $Office_Eq = "";
+            $Office_Eq = " ";
         }else{
             $Office_Eq = $request->input('EditOffice_Eq');
         }
         if($request->input('EditHospital_Eq') == ""){
-            $Hospital_Eq = "";
+            $Hospital_Eq = " ";
         }else{
             $Hospital_Eq = $request->input('EditHospital_Eq');
         }
         if($request->input('EditFurnitureNFixtures') == ""){
-            $FurnitureNFixtures = "";
+            $FurnitureNFixtures = " ";
         }else{
             $FurnitureNFixtures = $request->input('EditFurnitureNFixtures');
         }
         if($request->input('EditMotor_Vehicles') == ""){
-            $Motor_Vehicles = "";
+            $Motor_Vehicles = " ";
         }else{
             $Motor_Vehicles = $request->input('EditMotor_Vehicles');
         }
         if($request->input('EditInfo_Tech') == ""){
-            $Info_Tech = "";
+            $Info_Tech = " ";
         }else{
             $Info_Tech = $request->input('EditInfo_Tech');
         }
         if($request->input('EditOther_Machine_Eq') == ""){
-            $Other_Machine_Eq = "";
+            $Other_Machine_Eq = " ";
         }else{
             $Other_Machine_Eq = $request->input('EditOther_Machine_Eq');
         }
         if($request->input('EditOther_Asset') == ""){
-            $Other_Asset = "";
+            $Other_Asset = " ";
         }else{
             $Other_Asset = $request->input('EditOther_Asset');
         }
         if($request->input('EditRemark') == ""){
-            $Remark = "";
+            $Remark = " ";
         }else{
             $Remark = $request->input('EditRemark');
         }

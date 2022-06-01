@@ -20,42 +20,42 @@ class ProvincialAdminOfficeController extends Controller
         $data->Property_No = $request->input('Property_No'); /////Required
         $data->Particulars = $request->input('Particulars'); /////Required
         if($request->input('Date_Aquired') == ""){
-            $data->Date_Aquired = "";
+            $data->Date_Aquired = " ";
         }else{
             $data->Date_Aquired = $request->input('Date_Aquired');
         }
         // $data->Accountable_Person = $request->input('Accountable_Person');
         if($request->input('Quantity') == ""){
-            $data->Quantity = "";
+            $data->Quantity = " ";
         }else{
             $data->Quantity = $request->input('Quantity');
         }
         // $data->Location = $request->input('Location');
         if($request->input('Unit_Cost') == ""){
-            $data->Unit_Cost = "";
+            $data->Unit_Cost = " ";
         }else{
             $data->Unit_Cost = $request->input('Unit_Cost');
         }
         // $data->Med_dental_equipment = $request->input('Med_dental_equipment');
         if($request->input('Total_Cost') == ""){
-            $data->Total_Cost = "";
+            $data->Total_Cost = " ";
         }else{
             $data->Total_Cost = $request->input('Total_Cost');
         }
         // $data->Office_Eq = $request->input('Office_Eq');
         if($request->input('Accumulated_Depreciation') == ""){
-            $data->Accumulated_Depreciation = "";
+            $data->Accumulated_Depreciation = " ";
         }else{
             $data->Accumulated_Depreciation = $request->input('Accumulated_Depreciation');
         }
         // $data->Hospital_Eq = $request->input('Hospital_Eq');
         if($request->input('NetBookValue') == ""){
-            $data->NetBookValue = "";
+            $data->NetBookValue = " ";
         }else{
             $data->NetBookValue = $request->input('NetBookValue');
         }
         if($request->input('Remark') == ""){
-            $data->Remark = "";
+            $data->Remark = " ";
         }else{
             $data->Remark = $request->input('Remark');
         }
@@ -76,31 +76,31 @@ class ProvincialAdminOfficeController extends Controller
         $Quantity = $request->input('EditQuantity');
         // $Unit_Cost = $request->input('EditUnit_Cost');
         if($request->input('EditUnit_Cost') == ""){
-            $Unit_Cost = "";
+            $Unit_Cost = " ";
         }else{
             $Unit_Cost = $request->input('EditUnit_Cost');
         }
         // $Total_Cost = $request->input('EditTotal_Cost');
         if($request->input('EditTotal_Cost') == ""){
-            $Total_Cost = "";
+            $Total_Cost = " ";
         }else{
             $Total_Cost = $request->input('EditTotal_Cost');
         }
         // $Accumulated_Depreciation = $request->input('EditAccumulated_Depreciation');
         if($request->input('EditAccumulated_Depreciation') == ""){
-            $Accumulated_Depreciation = "";
+            $Accumulated_Depreciation = " ";
         }else{
             $Accumulated_Depreciation = $request->input('EditAccumulated_Depreciation');
         }
         // $NetBookValue = $request->input('EditNetBookValue');
         if($request->input('EditNetBookValue') == ""){
-            $NetBookValue = "";
+            $NetBookValue = " ";
         }else{
             $NetBookValue = $request->input('EditNetBookValue');
         }
         // $Remark = $request->input('EditRemark');
         if($request->input('EditRemark') == ""){
-            $Remark = "";
+            $Remark = " ";
         }else{
             $Remark = $request->input('EditRemark');
         }
