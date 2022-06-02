@@ -189,11 +189,11 @@
                     </div>
                     <div class="col-4">
                       <label>Date Aquired</label>
-                      <input name="Date_Aquired" type="text" class="form-control">
+                      <input name="Date_Aquired" type="date" class="form-control">
                     </div>
                     <div class="col-4">
                       <label>Aquisition Cost</label>
-                      <input name="Aquisition_Cost" type="text" class="form-control">
+                      <input name="Aquisition_Cost" type="number" class="form-control" >
                     </div>
                 </div>
                 <br>
@@ -223,16 +223,16 @@
                 <div class="row">
                     <div class="col-4">
                       <label>Motor Vehicles</label>
-                      <input name="Motor_Vehicles" type="text" class="form-control" >
+                      <input name="Motor_Vehicles" type="number" class="form-control" >
                     </div>
                   
                     <div class="col-4">
                       <label>Office Equipment</label>
-                      <input name="Office_Eq" type="text" class="form-control" >
+                      <input name="Office_Eq" type="number" class="form-control" >
                     </div>
                     <div class="col-4">
                       <label>Hospital Equipment</label>
-                      <input name="Hospital_Eq" type="text" class="form-control" >
+                      <input name="Hospital_Eq" type="number" class="form-control" >
                     </div>
                 </div>
                 <br>
@@ -240,26 +240,26 @@
                 <div class="row">
                     <div class="col-4">
                       <label>Med. Dental & Lab. equipment</label>
-                      <input name="Med_dental_equipment" type="text" class="form-control" >
+                      <input name="Med_dental_equipment" type="number" class="form-control" >
                     </div>
                     <div class="col-4">
                       <label>Furniture And Fixtures</label>
-                      <input name="FurnitureNFixtures" type="text" class="form-control" >
+                      <input name="FurnitureNFixtures" type="number" class="form-control" >
                     </div>
                     <div class="col-4">
                       <label>Information Technology</label>
-                      <input name="Info_Tech" type="text" class="form-control" >
+                      <input name="Info_Tech" type="number" class="form-control" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-6">
                       <label>Other Machineries & Equipment</label>
-                      <input name="Other_Machine_Eq" type="text" class="form-control" >
+                      <input name="Other_Machine_Eq" type="number" class="form-control" >
                     </div>
                     <div class="col-6">
                       <label>Other Asset</label>
-                      <input name="Other_Asset" type="text" class="form-control" >
+                      <input name="Other_Asset" type="number" class="form-control" >
                     </div>
                 </div>
                 <div class="form-group">

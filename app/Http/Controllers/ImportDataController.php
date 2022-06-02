@@ -26,11 +26,15 @@ class ImportDataController extends Controller
 //    }
 
     function PrietoDiazMedHospitalImport(Request $request){
-        $this->validate($request,[
+        $request->validate([
             'select_file' => 'required|mimes:xls,xlsx'
         ]);
-        $path = $request->file('select_file')->getRealPath();
-        Excel::import(new PrietoDiazMedImport, $path);
+
+        Excel::import(new PrietoDiazMedImport, $request->file('select_file'));
+
+        // $path = $request->file('select_file')->getRealPath();
+        // Excel::import(new PrietoDiazMedImport, $path);
+
         // $path = $request->file('select_file')->store();
         // (new PrietoDiazMedImport)->import($path);
 
@@ -66,7 +70,7 @@ class ImportDataController extends Controller
         //     }
         // }
         
-        return back()->with('message', 'Data Import Successful!');
+        return  redirect()->back()->with('message', 'Data Import Successful!');
     }
     function ProvincialAdminOfficeImport(Request $request){
         $this->validate($request,[
