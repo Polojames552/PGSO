@@ -18,6 +18,7 @@ use App\Http\Controllers\PrietoDiazMedHospitalController;
 use App\Http\Controllers\TourismController;
 use App\Http\Controllers\ProvincialAdminOfficeController;
 use App\Http\Controllers\ImportDataController;
+use App\Http\Controllers\PgsoMedDentalSupController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,14 +119,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('Others',[App\Http\Controllers\OtherController::class ,'Other_show'])->name('Others');
 	Route::get('Tourism',[App\Http\Controllers\TourismController::class ,'Tourism_show'])->name('Tourism');
 	Route::get('ProvincialAdminOffice',[App\Http\Controllers\ProvincialAdminOfficeController::class ,'ProvincialAdminOffice_show'])->name('ProvincialAdminOffice');
+	Route::get('PGSOMedicalDental',[App\Http\Controllers\PgsoMedDentalSupController::class ,'PgsoMedDentalSup_show'])->name('PGSOMedicalDental');
 	
 	Route::get('Pdfsample', function () {
 		return view('PDF.Pdfsample');
 	})->name('Pdfsample');
-
-	Route::get('PGSOMedicalDental', function () {
-		return view('pages.PGSOMedicalDental');
-	})->name('PGSOMedicalDental');
 
 	Route::get('PDFpreview', function () {
 		return view('PDFpreview');
@@ -172,6 +170,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('add_other',[OtherController::class ,'store']);
 	Route::post('add_tourism',[TourismController::class ,'store']);
 	Route::post('add_ProvincialAdminData',[ProvincialAdminOfficeController::class ,'store']);
+	Route::post('add_PGSOMedicalDental',[PgsoMedDentalSupController::class ,'store']);
 	//Edit Data
 	Route::post('edithealth/{id}',[PrietoDiazMedHospitalController::class ,'update_health'])->name('edithealth');
 	Route::post('editgpss/{id}',[GpssController::class ,'update_gpss'])->name('editgpss');
@@ -184,9 +183,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('editother/{id}',[OtherController::class ,'update_other'])->name('editother');
 	Route::post('edittourism/{id}',[TourismController::class ,'update_tourism'])->name('edittourism');
 	Route::post('editProvincialAdmin/{id}',[ProvincialAdminOfficeController::class ,'update_ProvincialData'])->name('editProvincialAdmin');
+	Route::post('editPGSOMedicalDental/{id}',[PgsoMedDentalSupController::class ,'update_MedicalDentalData'])->name('editPGSOMedicalDental');
+	
 	//Import Data From Excel
-	Route::post('ImportPrietoDiazMedHospital',[ImportDataController::class ,'PrietoDiazMedHospitalImport']);
-	Route::post('ImportProvincialAdminOffice',[ImportDataController::class ,'ProvincialAdminOfficeImport']);
+	Route::post('ImportPrietoDiazMedHospital',[ImportDataController::class ,'PrietoDiazMedHospitalImport'])->name('ImportPrietoDiazMedHospital');
+	Route::post('ImportProvincialAdminOffice',[ImportDataController::class ,'ProvincialAdminOfficeImport'])->name('ImportProvincialAdminOffice');
 });
 
 Route::group(['middleware' => 'auth'], function () {

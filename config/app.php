@@ -163,12 +163,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         LaravelFrontendPresets\MaterialPreset\MaterialPresetServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+        
         
         /*
          * Package Service Providers...
          */
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -233,9 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Excel'     => 'Maatwebsite\Excel\ExcelServiceProvider',
+        // 'Excel'     => 'Maatwebsite\Excel\ExcelServiceProvider',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
     ],
 
 ];

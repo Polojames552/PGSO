@@ -15,6 +15,16 @@ class CreatePgsoMedDentalSupsTable extends Migration
     {
         Schema::create('pgso_med_dental_sups', function (Blueprint $table) {
             $table->id();
+            $table->string('article');
+            $table->string('description');
+            $table->string('stockno');
+            $table->string('unitofmeasurement');
+            $table->string('unitvalue');
+            $table->string('balancecard');
+            $table->string('onhandcount');
+            $table->string('shortageqty');
+            $table->string('shortagevalue');
+            $table->string('remark');
             $table->timestamps();
         });
     }

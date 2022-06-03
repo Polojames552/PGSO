@@ -9,6 +9,15 @@ class PgsoMedDentalSup extends Model
 {
     use HasFactory;
     protected $fillable = [
-       
+        'article',
+        'description',
+        'stockno',
+        'unitofmeasurement',
+        'unitvalue',
+        'balancecard',
+        'onhandcount',
+        'shortageqty',
+        'shortagevalue',
+        'remark',
     ];
 }

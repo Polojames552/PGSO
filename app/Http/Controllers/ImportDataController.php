@@ -29,12 +29,10 @@ class ImportDataController extends Controller
         $request->validate([
             'select_file' => 'required|mimes:xls,xlsx'
         ]);
-
         Excel::import(new PrietoDiazMedImport, $request->file('select_file'));
-
+        // (new PrietoDiazMedImport)->import( $request->file('select_file'), null, \Maatwebsite\Excel\Excel::XLSX);
         // $path = $request->file('select_file')->getRealPath();
         // Excel::import(new PrietoDiazMedImport, $path);
-
         // $path = $request->file('select_file')->store();
         // (new PrietoDiazMedImport)->import($path);
 
@@ -43,33 +41,6 @@ class ImportDataController extends Controller
         //  }catch(\Exception){
         //      return back()->withError('Error');
         //  }
-        // if($data->count() > 0){
-        //     foreach($data->toArray() as $key => $value){
-        //         foreach($value as $row){
-        //             $insert_data[]=array(
-        //                 'Property_No' => $row['Property_No'],
-        //                 'Description' => $row['Description'],
-        //                 'Date_Aquired' => $row['Date_Aquired'],
-        //                 'Aquisition_Cost' => $row['Aquisition_Cost'],
-        //                 'Accountable_Person' => $row['Accountable_Person'],
-        //                 'Location' => $row['Location'],
-        //                 'Med_dental_equipment' => $row['Med_dental_equipment'],
-        //                 'Office_Eq' => $row['Office_Eq'],
-        //                 'Hospital_Eq' => $row['Hospital_Eq'],
-        //                 'FurnitureNFixtures' => $row['FurnitureNFixtures'],
-        //                 'Motor_Vehicles' => $row['Motor_Vehicles'],
-        //                 'Info_Tech' => $row['Info_Tech'],
-        //                 'Other_Machine_Eq' => $row['Other_Machine_Eq'],
-        //                 'Other_Asset' => $row['Other_Asset'],
-        //                 'Remark' => $row['Remark'],
-        //             );
-        //         }
-        //     }
-        //     if(!empty($insert_data)){
-        //         DB::table('prieto_diaz_med_hospitals')->insert($insert_data);
-        //     }
-        // }
-        
         return  redirect()->back()->with('message', 'Data Import Successful!');
     }
     function ProvincialAdminOfficeImport(Request $request){

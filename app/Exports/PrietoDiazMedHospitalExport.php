@@ -46,7 +46,7 @@ class PrietoDiazMedHospitalExport implements FromCollection, WithHeadings, Shoul
             'Aquisition Cost',
             'Accountable Person',
             'Location',
-            'Med.dental & Equipment',
+            'Medical dental & Equipment',
             'Office Equipment',
             'Hospital Equipment',
             'Furniture & Fixtures',

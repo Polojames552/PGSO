@@ -43,9 +43,10 @@
                                 <button href="#addEmployeeModal" id="addData" class="btn" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                  <li><a id="exportmenu" href="{{route('ProvincialAdmin_PDF')}}">PDF</a></li>
-                                  <li><a id="exportmenu" href="ProvincialAdmin_Excel">Excel</a></li>
+                                  <!-- <li><a id="exportmenu" href="{{route('ProvincialAdmin_PDF')}}">PDF</a></li> -->
                                   <li><a id="exportmenu" href="#" onclick="window.open('PdfProvincialAdmin', '_blank', 'fullscreen=yes'); return false;">MyPDF</a> </li>
+                                  <li><a id="exportmenu" href="ProvincialAdmin_Excel">Excel</a></li>
+                             
                                 </ul>
                                 <button href="#ImportDataModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-import"></i> Import Data</button>
                               </div>
