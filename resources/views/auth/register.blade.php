@@ -1,5 +1,7 @@
 @extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'register', 'title' => __('PGSO')])
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!--Ajax -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 @section('content')
 
 <div class="container" style="height: auto;">
@@ -51,6 +53,9 @@
                 </div>
                 <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
               </div>
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                <strong id="error_email"></strong>
+                </div>
               @if ($errors->has('email'))
                 <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
                   <strong>{{ $errors->first('email') }}</strong>
@@ -136,7 +141,7 @@
             </div> -->
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg" onclick="sendOTP();">{{ __('Send code') }}</button>
+              <button type="submit" id="OTPbtn" class="btn btn-primary btn-link btn-lg" onclick="sendOTP();">{{ __('Send code') }}</button>
           </div>
           </div>
 
@@ -165,7 +170,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+ 
+    <script>
+      $(document).ready(function(){
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+           $('#email').blur(function(){
+             var error_email = '';
+             var email = $('#email').val();
+             var _token = $('input[name="_token"]');
+             var filter = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
+             if(!filter.test(email)){
+              $('#error').addClass('has-error');
+              $('#error_email').html('<label class="text-danger">Invalid Email format.</label>');
+              $('#OTPbtn').attr('disabled', 'disabled');
+             }else{
+              $.ajax({
+                url:"{{ route ('email_available') }}",
+                method: 'post',
+                data:{email:email, _token: _token},
+                success:function(result){
+                  if(result == 'unique'){
+                    $('#error_email').html('<label class="text-success">Email Available</label>');
+                    $('#error').addClass('has-error');
+                    $('#OTPbtn').attr('disabled', false);
+                  }else{
+                   $('#error_email').html('<label class="text-danger">The email is not available.</label>');
+                   $('#error').addClass('has-error');
+                   $('#OTPbtn').attr('disabled', 'disabled');
+                  }
+                }
+              });
+             }
+           
+            
+           });
+         });
+    </script>
     <script>
         var firebaseConfig = {
           apiKey: "AIzaSyBTE-L_xzyjxvKzIxSyje4H2ynYpDIg9js",
@@ -182,38 +227,21 @@
         window.onload = function () {
             render();
         };
+
         function render() {
             window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
             recaptchaVerifier.render();
         }
+       
         function sendOTP() {
-          var email =  $("#email").val();
+            var email =  $("#email").val();
             var pass = $("#password").val();
-
             var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             var passw=  /^[A-Za-z]\w{7,14}$/;
-            // var num = $count;
-            // var me = "unique";
-            // var colors = [$user['email']];
+            var email_num = 0;
 
-            // colors.forEach(function(color){
-            //     if(color == email){
-            //         me = "not";
-            //     }
-            // });
 
-            // foreach($user as $user){
-            //     if($user['email'] == email)){
-            //         me = "not";
-            //     }
-            // }
-            //   for (let i = 0; i < num; i++) {
-            //       if($user[i]->email == email)){
-            //           me = "not";
-            //       }
-            //  }
-
-            //  if(me == "not"){
+              // if(email_num == 0){
                 if($("#password_confirmation").val() != "" && $("#password").val() != "" && $("#email").val() != "" && $("#name").val() != "" ){
                     if(email.match(pattern)){
                         if(pass.match(passw)){
@@ -231,7 +259,6 @@
                                             firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
                                             window.confirmationResult = confirmationResult;
                                             coderesult = confirmationResult;
-
                                             console.log(coderesult);
                                             $("#success").text("Message sent");
                                             $("#success").show();
@@ -266,10 +293,10 @@
                     $("#error").text("Please Input the necessary fields!");
                     $("#error").show();
                 }
-            //  }else{
-            //      $("#error").text($count);
-            //      $("#error").show();
-            //  }
+              // }else{
+              //     $("#error").text('Email Already Exist');
+              //     $("#error").show();
+              // }
         }
         function verify() {
             var code = $("#verification").val();

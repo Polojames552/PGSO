@@ -19,6 +19,7 @@ use App\Http\Controllers\TourismController;
 use App\Http\Controllers\ProvincialAdminOfficeController;
 use App\Http\Controllers\ImportDataController;
 use App\Http\Controllers\PgsoMedDentalSupController;
+use App\Http\Controllers\OTPController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +37,7 @@ Route::get('/', function () {
 Route::get('firebase-phone-authentication', [FirebaseController::class, 'index']);
 // Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('/email_available', 'OTPController@OTPValidate')->name('email_available');
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
