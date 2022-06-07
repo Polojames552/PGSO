@@ -47,7 +47,7 @@
                                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Export<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                   <!-- <li><a id="exportmenu" href="{{route('PrietoDiazMedHospital_PDF')}}">PDF</a></li> -->
-                                  <li><a id="exportmenu" href="#" onclick="window.open('PdfPrietoDiazMedHospital', '_blank', 'fullscreen=yes'); return false;">PDF</a> </li>
+                                  <li><a id="exportmenu" href="#" onclick="window.open('PdfPGSOMedicalDental', '_blank', 'fullscreen=yes'); return false;">PDF</a> </li>
                                   <li><a id="exportmenu" href="PrietoDiazMedHospital_export">Excel</a></li>
                                   <!-- <li><a id="exportmenu" href="{{route('PDFpreview')}}">My PDF preview</a></li> -->
                                   <!-- <li><a id="exportmenu" onClick="window.print()">Print Preview</a></li> -->

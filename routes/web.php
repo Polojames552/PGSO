@@ -37,7 +37,8 @@ Route::get('/', function () {
 Route::get('firebase-phone-authentication', [FirebaseController::class, 'index']);
 // Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/email_available', 'OTPController@OTPValidate')->name('email_available');
+Route::get('/register',[App\Http\Controllers\OTPController::class ,'index'])->name('register');
+Route::post('/register/check',[App\Http\Controllers\OTPController::class ,'check'])->name('register.check');
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
@@ -138,6 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('PdfPrietoDiazMedHospital',[App\Http\Controllers\PdfController::class ,'PDFPrietoDiazMedHospitalData'])->name('PdfPrietoDiazMedHospital');
 	Route::get('PdfTourism',[App\Http\Controllers\PdfController::class ,'PDFTourismData'])->name('PdfTourism');
 	Route::get('PdfProvincialAdmin',[App\Http\Controllers\PdfController::class ,'PdfProvincialAdminData'])->name('PdfProvincialAdmin');
+	Route::get('PdfPGSOMedicalDental',[App\Http\Controllers\PdfController::class ,'PdfPGSOMedicalDentalData'])->name('PdfPGSOMedicalDental');
 	// PDF Export
 	// Route::post('PDF_Form',[App\Http\Controllers\PdfController::class,'PDF_health'])->name('PDF_Form');
 	Route::get('PrietoDiazMedHospital_PDF',[App\Http\Controllers\PdfController::class,'PrietoDiazMedHospital_Export'])->name('PrietoDiazMedHospital_PDF');

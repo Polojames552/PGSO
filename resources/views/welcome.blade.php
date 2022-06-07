@@ -87,19 +87,27 @@
             </div>
          
           </div>
-       
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Login') }}</button>
     
-          <div class="card-footer justify-content-center">
-          <a href="{{ route('register') }}" class="text">
-                <small>{{ __('Create new account') }}</small>
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Login') }}</button>
+       
+      <center>
+            <a href="{{ route('register') }}" class="text" id="createacc">
+                <strong>{{ __('Do you have an account? Register now!') }}</strong>
             </a>
-          </div>
+            </center><br>
         </div>
       </form>
     </div>
   </div>
 </div>
+<style>
+  #createacc{
+    color: #000000;
+  }
+  #createacc:hover{
+    color: #808080;
+  }
+</style>
 <script>
       function myFunction() {
                 var x = document.getElementById("password");

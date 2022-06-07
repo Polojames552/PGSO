@@ -27,6 +27,11 @@ class PdfController extends Controller
         $count = DB::table('provincial_admin_offices')->count();
         return view('PDF.PdfProvincialAdmin',['data'=>$data, 'count'=>$count]);
     }
+    function PdfPGSOMedicalDentalData(){
+        $data = DB::table('pgso_med_dental_sups')->get();
+        $count = DB::table('pgso_med_dental_sups')->count();
+        return view('PDF.PdfPGSOMedicalDental',['data'=>$data, 'count'=>$count]);
+    }
     
     function PrietoDiazMedHospital_Export(){
          $health = PrietoDiazMedHospital::all();
