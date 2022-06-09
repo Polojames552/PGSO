@@ -251,15 +251,16 @@
               // if(email_num == 0){
                 if($("#password_confirmation").val() != "" && $("#password").val() != "" && $("#email").val() != "" && $("#name").val() != "" ){
                     if(email.match(pattern)){
+                      if(pass.length < 8){
+                                    $("#error").text("The password must be at least 8 characters.");
+                                    $("#error").show();
+                      }else{
                         if(pass.match(passw)){
                                 if($("#password_confirmation").val() != $("#password").val()){
                                     $("#error").text("Password doesn't match!");
                                     $("#error").show();
                                 }
-                                else if(pass.length < 8){
-                                    $("#error").text("The password must be at least 8 characters.");
-                                    $("#error").show();
-                                }else{
+                                else{
                                     var number = $("#phone").val();
                                     if(number.charAt(0) == "+" && number.charAt(1) == "6" && number.charAt(2) == "3" && number.charAt(3) == "9"){
                                         if(number.length > 12){
@@ -291,6 +292,7 @@
                                 $("#error").text("Password must contain combination of letters and number");
                                 $("#error").show();
                             }
+                      }
                     }
                     else{
                         $("#error").text("Please input a valid email address");
