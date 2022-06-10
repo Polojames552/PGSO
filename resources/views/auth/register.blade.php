@@ -244,7 +244,9 @@
             var email =  $("#email").val();
             var pass = $("#password").val();
             var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-            var passw=  /^[A-Za-z]\w{7,14}$/;
+            // var passw =  /^[a-zA-Z0-9]+$/;
+            var letterpat = /[a-zA-Z]/; 
+            var numberpat = /[0-9]/;
             var email_num = 0;
 
 
@@ -255,7 +257,7 @@
                                     $("#error").text("The password must be at least 8 characters.");
                                     $("#error").show();
                       }else{
-                        if(pass.match(passw)){
+                        if(numberpat.test(pass) && letterpat.test(pass)){
                                 if($("#password_confirmation").val() != $("#password").val()){
                                     $("#error").text("Password doesn't match!");
                                     $("#error").show();
@@ -273,6 +275,8 @@
                                             var element = document.getElementById("error");
                                             element.style.display = "none";
                                             var element = document.getElementById("verify1");
+                                            element.style.display = "none";
+                                            var element = document.getElementById("createacc");
                                             element.style.display = "none";
                                             var element = document.getElementById("verify2");
                                             element.style.display = "block";
