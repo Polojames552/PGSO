@@ -1,11 +1,11 @@
 @extends('layouts.app', ['activePage' => 'PrietoDiazMedHospital', 'titlePage' => __('PrietoDiazMedHospital')])
-	  
+
     <!-- PDFmake link reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js" integrity="sha512-cktKDgjEiIkPVHYbn8bh/FEyYxmt4JDJJjOCu5/FQAkW4bc911XtKYValiyzBiJigjVEvrIAyQFEbRJZyDA1wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<!-- javascript void link reference -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+
         <link rel="stylesheet" href="{{ asset('css/table2.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   <!-- humburgerv link-->
 @section('content')
@@ -40,7 +40,7 @@
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                     <div class="col-sm-12">
                         <div class="dropdown">
-                      
+
                                 <button id="addData" href="#addEmployeeModal" class="btn" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
@@ -116,7 +116,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($health as $health) 
+                                    @foreach($health as $health)
                                         <tr>
 										                    <td>{{$health->Property_No}}</td>
                                         <td>{{$health->Description}}</td>
@@ -152,11 +152,11 @@
 			<div class="modal-content">
 			<form action="{{route ('ImportPrietoDiazMedHospital') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Import Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">	
+					<div class="modal-body">
 						<p>Select Excel File to Import:</p>
 				    <input type="file" name="select_file">
 					</div>
@@ -169,19 +169,19 @@
 			</div>
 		</div>
 	</div>
-  <!--  Import Data Modal HTML -->  
+  <!--  Import Data Modal HTML -->
                         <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<form action="add_health" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Add Health Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-                
-					<div class="modal-body">					
+
+					<div class="modal-body">
                   <div class="row">
                     <div class="col-4">
                       <label>Property No.</label>
@@ -197,13 +197,13 @@
                     </div>
                 </div>
                 <br>
-            
+
             <div class="form-group">
               <div class="col-12">
                 <label>Accountable Person</label>
                 <input name="Accountable_Person" type="text" class="form-control">
-              </div>	
-						</div>		
+              </div>
+						</div>
 
             <div class="form-group">
               <div class="col-12">
@@ -218,14 +218,14 @@
 							  <label>Location</label>
 							  <input name="Location" type="text" class="form-control" >
               </div>
-						</div>					
-				
+						</div>
+
                 <div class="row">
                     <div class="col-4">
                       <label>Motor Vehicles</label>
                       <input name="Motor_Vehicles" type="number" class="form-control" >
                     </div>
-                  
+
                     <div class="col-4">
                       <label>Office Equipment</label>
                       <input name="Office_Eq" type="number" class="form-control" >
@@ -236,7 +236,7 @@
                     </div>
                 </div>
                 <br>
-         
+
                 <div class="row">
                     <div class="col-4">
                       <label>Med. Dental & Lab. equipment</label>
@@ -266,8 +266,8 @@
                   <div class="col-12">
                         <label>Remark</label>
                         <input name="Remark" type="text" class="form-control" >
-                  </div>	
-						    </div>		
+                  </div>
+						    </div>
                 <br>
             </div>
 					  <div class="modal-footer">
@@ -284,11 +284,11 @@
 			<div class="modal-content">
       <form action="edithealth" method="post" enctype="multipart/form-data" id="editForm">
                       {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Edit Health Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-          <div class="modal-body">					
+          <div class="modal-body">
                   <div class="row">
                     <div class="col-4">
                       <label>Property No.</label>
@@ -308,14 +308,14 @@
               <div class="col-12">
 							  <label>Accountable Person</label>
 							  <input id="EditAccountable_Person" name="EditAccountable_Person" type="text" class="form-control" required>
-              </div>	
-            </div>		
+              </div>
+            </div>
 
             <div class="form-group">
               <div class="col-12">
 							  <label>Description</label>
                 <input id="EditDescription" name="EditDescription" type="text" class="form-control" required>
-							</div>	
+							</div>
               <!-- <textarea name="name" class="form-control" required></textarea> -->
 						</div>
 
@@ -323,9 +323,9 @@
               <div class="col-12">
 							  <label>Location</label>
 							  <input id="EditLocation" name="EditLocation" type="text" class="form-control" >
-              </div>	
-            </div>					
-				
+              </div>
+            </div>
+
                 <div class="row">
                     <div class="col-4">
                       <label>Motor Vehicles</label>
@@ -370,8 +370,8 @@
                 <div class="col-12">
                     <label>Remark</label>
                     <input id="EditRemark" name="EditRemark" type="text" class="form-control" >
-                </div>	
-              </div>	
+                </div>
+              </div>
                 <br>
             </div>
 					<div class="modal-footer">
@@ -390,12 +390,12 @@
 				<form id="delete_modal_Form" method="POST">
 				{{ csrf_field() }}
         {{ method_field('DELETE') }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">	
-					<input type="hidden" id="delete_youth_id">				
+					<div class="modal-body">
+					<input type="hidden" id="delete_youth_id">
 						<p>Are you sure you want to delete these Records?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -460,7 +460,7 @@
                   // keepWithHeaderRows: 1,
                   body: [
                     [
-                     
+
                     {text: 'Property No.', style: 'tableHeader', alignment: 'center'},
                     {text: 'Description', style: 'tableHeader', alignment: 'center'},
                     {text: 'Date Aquired', style: 'tableHeader', alignment: 'center'},
@@ -476,7 +476,7 @@
                     {text: 'Other Asset', style: 'tableHeader', alignment: 'center'},
                     {text: 'Remark', style: 'tableHeader', alignment: 'center'}
                     ],
-                   
+
                     [
                     // foreach($health as $health)
                     {text: 'Property_No', style: 'content', alignment: 'left'},
@@ -495,7 +495,7 @@
                     {text: 'Remark', style: 'content', alignment: 'left'}
                     // endforeach
                   ],
-                    
+
                     // ['Sample value 1', 'Sample value 2', 'Sample value 3', 'Sample value 4', 'Sample value 5', 'Sample value 6', 'Sample value 7', 'Sample value 8', 'Sample value 9', 'Sample value 10', 'Sample value 11', 'Sample value 12', 'Sample value 13', 'Sample value 14'],
                   ]
                 }
@@ -536,10 +536,10 @@
             // alert('hello');
             pdfMake.createPdf(docDefinition).download();
           }
-         
-          
+
+
               $(document).ready(function(){
-                  
+
                   $('.TableData').on('click', '#deletebtn', function(){
                     $tr = $(this).closest('tr');
 

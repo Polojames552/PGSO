@@ -22,7 +22,7 @@
 								</div>
 							@endif
 					    	</div>
-							
+
                         <div class="col-sm-12">
                             <p align="right">
 								<button href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i></button>
@@ -50,7 +50,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($asset as $asset) 
+                                    @foreach($asset as $asset)
                                         <tr>
 											<td>{{$asset->id}}</td>
 											<td>{{$asset->Product_name}}</td>
@@ -76,12 +76,12 @@
 			<div class="modal-content">
 				<form action="asset" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Add Asset Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Product Name</label>
 							<input name="Product_name" type="text" class="form-control" required>
@@ -98,7 +98,7 @@
 						<div class="form-group">
 							<label>Price</label>
 							<input name="Price" type="text" class="form-control" required>
-						</div>					
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
@@ -114,11 +114,11 @@
 			<div class="modal-content">
 			<form action="editasset" method="post" enctype="multipart/form-data" id="editForm">
                       {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Product Name</label>
 							<input name="EditProduct_name" type="text" class="form-control" id="Product_name" required>
@@ -135,7 +135,7 @@
 						<div class="form-group">
 							<label>Price</label>
 							<input name="EditPrice" type="text" class="form-control" id="Price" required>
-						</div>					
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
@@ -153,12 +153,12 @@
 				<form id="delete_modal_Form" method="POST">
 				{{ csrf_field() }}
             	{{ method_field('DELETE') }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">	
-					<input type="hidden" id="delete_youth_id">				
+					<div class="modal-body">
+					<input type="hidden" id="delete_youth_id">
 						<p>Are you sure you want to delete these Records?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -171,7 +171,7 @@
 			</div>
 		</div>
 	</div>
-    
+
         </div>
       </div>
     </div>
@@ -192,7 +192,6 @@
                       $('#delete_youth_id').val(data[0]);
                     //   $('#youth_name').val(data[1]);
                       $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
-
                       $('#deleteEmployeeModal').modal('show');
                   });
 

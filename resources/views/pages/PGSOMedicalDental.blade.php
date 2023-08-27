@@ -1,11 +1,11 @@
 @extends('layouts.app', ['activePage' => 'PGSOMedicalDental', 'titlePage' => __('PGSOMedicalDental')])
-	  
+
     <!-- PDFmake link reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js" integrity="sha512-cktKDgjEiIkPVHYbn8bh/FEyYxmt4JDJJjOCu5/FQAkW4bc911XtKYValiyzBiJigjVEvrIAyQFEbRJZyDA1wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<!-- javascript void link reference -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+
         <link rel="stylesheet" href="{{ asset('css/table2.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   <!-- humburgerv link-->
 @section('content')
@@ -40,7 +40,7 @@
 					 <!-- <button class="btn btn-danger" id="sample" onclick="sample();">ClickMe</button> -->
                     <div class="col-sm-12">
                         <div class="dropdown">
-                      
+
                                 <button id="addData" href="#addEmployeeModal" class="btn" data-toggle="modal"><i class="fas fa-user-plus"></i> Add Data</button>
                                 <!-- <button class="btn btn-danger" id="btnPDF" onclick="GenPDF()"><i class="fas fa-file-download"></i></button> -->
                                 <!-- <button href="#PDFModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-file-download"></i> PDF</button> -->
@@ -77,50 +77,50 @@
                                 <table id="datatablesSimple" class="TableData">
                                     <thead>
                                         <tr>
-											<th>ID</th>
-											<th>ARTICLE</th>
-											<th>DESCRIPTION</th>
-											<th>STOCK NO</th>
-											<th>UNIT OG MEASUREMENT</th>
-											<th>UNIT VALUE</th>
-											<th>BALANCE PER CARD (QUANTITY)</th>
-											<th>ON HAND PER COUNT (QUANTITY)</th>
-											<th>SHORTAGE QUANTITY</th>
-											<th>SHORTAGE VALUE</th>
-											<th>Remark</th>
-											<th>Operations</th>
+                                          <th>ID</th>
+                                          <th>ARTICLE</th>
+                                          <th>DESCRIPTION</th>
+                                          <th>STOCK NO</th>
+                                          <th>UNIT OG MEASUREMENT</th>
+                                          <th>UNIT VALUE</th>
+                                          <th>BALANCE PER CARD (QUANTITY)</th>
+                                          <th>ON HAND PER COUNT (QUANTITY)</th>
+                                          <th>SHORTAGE QUANTITY</th>
+                                          <th>SHORTAGE VALUE</th>
+                                          <th>Remark</th>
+                                          <th>Operations</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th>ID</th>
-											<th>ARTICLE</th>
-											<th>DESCRIPTION</th>
-											<th>STOCK NO</th>
-											<th>UNIT OG MEASUREMENT</th>
-											<th>UNIT VALUE</th>
-											<th>BALANCE PER CARD (QUANTITY)</th>
-											<th>ON HAND PER COUNT (QUANTITY)</th>
-											<th>SHORTAGE QUANTITY</th>
-											<th>SHORTAGE VALUE</th>
-											<th>Remark</th>
-											<th>Operations</th>
+                                          <th>ID</th>
+                                          <th>ARTICLE</th>
+                                          <th>DESCRIPTION</th>
+                                          <th>STOCK NO</th>
+                                          <th>UNIT OG MEASUREMENT</th>
+                                          <th>UNIT VALUE</th>
+                                          <th>BALANCE PER CARD (QUANTITY)</th>
+                                          <th>ON HAND PER COUNT (QUANTITY)</th>
+                                          <th>SHORTAGE QUANTITY</th>
+                                          <th>SHORTAGE VALUE</th>
+                                          <th>Remark</th>
+                                          <th>Operations</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($data as $data) 
+                                    @foreach($data as $data)
                                         <tr>
-										<td>{{$data->id}}</td>
-                                        <td>{{$data->article}}</td>
-                                        <td>{{$data->description}}</td>
-                                        <td>{{$data->stockno}}</td>
-										<td>{{$data->unitofmeasurement}}</td>
-                                        <td>{{$data->unitvalue}}</td>
-                                        <td>{{$data->balancecard}}</td>
-										<td>{{$data->onhandcount}}</td>
-                                        <td>{{$data->shortageqty}}</td>
-                                        <td>{{$data->shortagevalue}}</td>
-										<td>{{$data->remark}}</td>
+                                          <td>{{$data->id}}</td>
+                                          <td>{{$data->article}}</td>
+                                          <td>{{$data->description}}</td>
+                                          <td>{{$data->stockno}}</td>
+                                          <td>{{$data->unitofmeasurement}}</td>
+                                          <td>{{$data->unitvalue}}</td>
+                                          <td>{{$data->balancecard}}</td>
+                                          <td>{{$data->onhandcount}}</td>
+                                          <td>{{$data->shortageqty}}</td>
+                                          <td>{{$data->shortagevalue}}</td>
+                                          <td>{{$data->remark}}</td>
                                         <td>
                                             <!-- <a href="#editEmployeeModal" class="edit" class="editbtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> -->
                                             <!-- <a href="#deleteEmployeeModal" class="delete" id="deletebtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
@@ -140,11 +140,11 @@
 			<div class="modal-content">
 			<form action="{{route ('ImportPrietoDiazMedHospital') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Import Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">	
+					<div class="modal-body">
 						<p>Select Excel File to Import:</p>
 				    <input type="file" name="select_file">
 					</div>
@@ -157,19 +157,19 @@
 			</div>
 		</div>
 	</div>
-  <!--  Import Data Modal HTML -->  
+  <!--  Import Data Modal HTML -->
     <!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<form action="add_PGSOMedicalDental" method="post" enctype="multipart/form-data">
                       {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Add Health Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-                
-					<div class="modal-body">					
+
+					<div class="modal-body">
                   <div class="row">
                     <div class="col-6">
                       <label>Article</label>
@@ -190,13 +190,13 @@
 							<!-- <textarea name="name" class="form-control" required></textarea> -->
 			</div>
 
-				
+
                 <div class="row">
                     <div class="col-4">
                       <label>Unit Of Measurement</label>
                       <input name="unitofmeasurement" type="text" class="form-control" >
                     </div>
-                  
+
                     <div class="col-4">
                       <label>Unit Value</label>
                       <input name="unitvalue" type="number" class="form-control" >
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <br>
-			
+
                 <div class="row">
                     <div class="col-4">
                       <label>On Hand Per Count(qty)</label>
@@ -223,13 +223,13 @@
                     </div>
                 </div>
                 <br>
-              
+
                 <div class="form-group">
                   <div class="col-12">
                         <label>Remark</label>
                         <input name="remark" type="text" class="form-control" >
-                  </div>	
-					</div>		
+                  </div>
+					</div>
                 <br>
             </div>
 					  <div class="modal-footer">
@@ -246,12 +246,12 @@
 			<div class="modal-content">
       <form action="edithealth" method="post" enctype="multipart/form-data" id="editForm">
 	  {{ csrf_field() }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Edit Medical And Dental Data</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-                
-					<div class="modal-body">					
+
+					<div class="modal-body">
                   <div class="row">
                     <div class="col-6">
                       <label>Article</label>
@@ -273,13 +273,13 @@
 							<!-- <textarea name="name" class="form-control" required></textarea> -->
 			</div>
 
-				
+
                 <div class="row">
                     <div class="col-4">
                       <label>Unit Of Measurement</label>
                       <input id="Editunitofmeasurement" name="Editunitofmeasurement" type="text" class="form-control" >
                     </div>
-                  
+
                     <div class="col-4">
                       <label>Unit Value</label>
                       <input id="Editunitvalue" name="Editunitvalue" type="number" class="form-control" >
@@ -290,7 +290,7 @@
                     </div>
                 </div>
                 <br>
-			
+
                 <div class="row">
                     <div class="col-4">
                       <label>On Hand Per Count(qty)</label>
@@ -306,13 +306,13 @@
                     </div>
                 </div>
                 <br>
-              
+
                 <div class="form-group">
                   <div class="col-12">
                         <label>Remark</label>
                         <input id="Editremark" name="Editremark" type="text" class="form-control" >
-                  </div>	
-					</div>		
+                  </div>
+					</div>
                 <br>
             </div>
 					<div class="modal-footer">
@@ -331,12 +331,12 @@
 				<form id="delete_modal_Form" method="POST">
 				{{ csrf_field() }}
         {{ method_field('DELETE') }}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">	
-					<input type="hidden" id="delete_youth_id">				
+					<div class="modal-body">
+					<input type="hidden" id="delete_youth_id">
 						<p>Are you sure you want to delete these Records?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -362,42 +362,41 @@
             // alert('hello');
             pdfMake.createPdf(docDefinition).download();
           }
-          
-              $(document).ready(function(){
-                  
-                  $('.TableData').on('click', '#deletebtn', function(){
-                    $tr = $(this).closest('tr');
 
-                      var data = $tr.children("td").map(function(){
-                          return $(this).text();
-                      }).get();
-                      $('#delete_youth_id').val(data[0]);
-                    //   $('#youth_name').val(data[1]);
-                      $('#delete_modal_Form').attr('action', 'health-delete/'+data[0]);
-                      $('#deleteEmployeeModal').modal('show');
-                  });
+                $(document).ready(function(){
 
-                  $('.TableData').on('click', '#editbtn', function(){
-                    $tr = $(this).closest('tr');
+                    $('.TableData').on('click', '#deletebtn', function(){
+                      $tr = $(this).closest('tr');
 
-                      var data = $tr.children("td").map(function(){
-                          return $(this).text();
-                      }).get();
-                      $('#Editarticle').val(data[1]);
-					  $('#Editdescription').val(data[2]);
-                      $('#Editstockno').val(data[3]);
-                      $('#Editunitofmeasurement').val(data[4]);
-                      $('#Editunitvalue').val(data[5]);
-                      $('#Editbalancecard').val(data[6]);
-                      $('#Editonhandcount').val(data[7]);
-                      $('#Editshortageqty').val(data[8]);
-                      $('#Editshortagevalue').val(data[9]);
-                      $('#Editremark').val(data[19]);
-                      // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
-                      $('#editForm').attr('action', 'editPGSOMedicalDental/'+data[0]);
-                      $('#editEmployeeModal').modal('show');
-                  });
-              });
+                        var data = $tr.children("td").map(function(){
+                            return $(this).text();
+                        }).get();
+                        $('#delete_youth_id').val(data[0]);
+                      //   $('#youth_name').val(data[1]);
+                        $('#delete_modal_Form').attr('action', 'health-delete/'+data[0]);
+                        $('#deleteEmployeeModal').modal('show');
+                    });
+
+                    $('.TableData').on('click', '#editbtn', function(){
+                      $tr = $(this).closest('tr');
+                        var data = $tr.children("td").map(function(){
+                            return $(this).text();
+                        }).get();
+                        $('#Editarticle').val(data[1]);
+                        $('#Editdescription').val(data[2]);
+                        $('#Editstockno').val(data[3]);
+                        $('#Editunitofmeasurement').val(data[4]);
+                        $('#Editunitvalue').val(data[5]);
+                        $('#Editbalancecard').val(data[6]);
+                        $('#Editonhandcount').val(data[7]);
+                        $('#Editshortageqty').val(data[8]);
+                        $('#Editshortagevalue').val(data[9]);
+                        $('#Editremark').val(data[19]);
+                        // $('#delete_modal_Form').attr('action', 'assets-delete/'+data[0]);
+                        $('#editForm').attr('action', 'editPGSOMedicalDental/'+data[0]);
+                        $('#editEmployeeModal').modal('show');
+                    });
+                });
         </script>
 
 

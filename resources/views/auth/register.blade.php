@@ -14,7 +14,7 @@
           <div id="verify1">
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
-           
+
             <!-- <div class="social-line">
               <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
@@ -158,7 +158,7 @@
                     <input id="verification" type="text" name="verification" class="form-control" placeholder="{{ __('verification code...') }}" required>
                   </div>
               </div>
-              
+
               <div class="card-footer justify-content-center">
                 <button type="submit" class="btn btn-primary btn-link btn-lg" onclick="verify();">{{ __('Confirm Registration') }}</button>
               </div>
@@ -169,7 +169,7 @@
             </a>
             </center><br>
         </div>
-        
+
       </form>
     </div>
   </div>
@@ -185,7 +185,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
- 
+
     <script>
       $(document).ready(function(){
            $('#email').blur(function(){
@@ -239,13 +239,13 @@
             window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
             recaptchaVerifier.render();
         }
-       
+
         function sendOTP() {
             var email =  $("#email").val();
             var pass = $("#password").val();
             var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             // var passw =  /^[a-zA-Z0-9]+$/;
-            var letterpat = /[a-zA-Z]/; 
+            var letterpat = /[a-zA-Z]/;
             var numberpat = /[0-9]/;
             var email_num = 0;
 
